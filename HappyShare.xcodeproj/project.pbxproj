@@ -7,16 +7,70 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EAE0EE671D0E5051003404B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE661D0E5051003404B2 /* AppDelegate.swift */; };
-		EAE0EE691D0E5051003404B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE681D0E5051003404B2 /* ViewController.swift */; };
-		EAE0EE6C1D0E5051003404B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6A1D0E5051003404B2 /* Main.storyboard */; };
+		16BAA32FA116AB916188B80C /* Pods_HappyShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0780278DA84EBEB91BA590D2 /* Pods_HappyShare.framework */; };
+		EA7968721DC9D3D300ACDEBC /* 乐享.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA7968681DC9D3D300ACDEBC /* 乐享.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		EA79687E1DC9D3FD00ACDEBC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7968791DC9D3FD00ACDEBC /* ShareViewController.swift */; };
+		EA79687F1DC9D3FD00ACDEBC /* LXKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687A1DC9D3FD00ACDEBC /* LXKFileManager.swift */; };
+		EA7968801DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */; };
+		EA7968811DC9D3FD00ACDEBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */; };
+		EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA79687D1DC9D3FD00ACDEBC /* Info.plist */; };
+		EA7968891DC9D47100ACDEBC /* LXKCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */; };
+		EA79688A1DC9D47100ACDEBC /* HSCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */; };
+		EADABDA01E81050500F7EE7E /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */; };
+		EADABDA11E81050500F7EE7E /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */; };
+		EADABDA21E81050500F7EE7E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */; };
+		EADABDA31E81050500F7EE7E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */; };
+		EADABDA41E81050500F7EE7E /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */; };
+		EADABDA51E81050500F7EE7E /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */; };
 		EAE0EE6E1D0E5051003404B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */; };
-		EAE0EE711D0E5051003404B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6F1D0E5051003404B2 /* LaunchScreen.storyboard */; };
 		EAE0EE7C1D0E5051003404B2 /* HappyShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE7B1D0E5051003404B2 /* HappyShareTests.swift */; };
 		EAE0EE871D0E5051003404B2 /* HappyShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE861D0E5051003404B2 /* HappyShareUITests.swift */; };
+		EAE0EEA91D0E56FC003404B2 /* HappyShare.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE9F1D0E56FC003404B2 /* HappyShare.xcdatamodel */; };
+		EAE0EEAB1D0E56FC003404B2 /* project副本.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEA11D0E56FC003404B2 /* project副本.plist */; };
+		EAE0EEB11D0E56FC003404B2 /* LXKCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */; };
+		EAE0EEB21D0E56FC003404B2 /* HSCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */; };
+		EAE0EEB91D0E5712003404B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB31D0E5712003404B2 /* Main.storyboard */; };
+		EAE0EEBA1D0E5712003404B2 /* Note.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB41D0E5712003404B2 /* Note.storyboard */; };
+		EAE0EEBB1D0E5712003404B2 /* Tag.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB51D0E5712003404B2 /* Tag.storyboard */; };
+		EAE0EEBC1D0E5712003404B2 /* Album.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB61D0E5712003404B2 /* Album.storyboard */; };
+		EAE0EEBD1D0E5712003404B2 /* Mine.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB71D0E5712003404B2 /* Mine.storyboard */; };
+		EAE0EEBE1D0E5712003404B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EEB81D0E5712003404B2 /* LaunchScreen.storyboard */; };
+		EAE0EEC11D0E5734003404B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEBF1D0E5734003404B2 /* AppDelegate.swift */; };
+		EAE0EEC21D0E5734003404B2 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEC01D0E5734003404B2 /* Global.swift */; };
+		EAE0EECB1D0E5754003404B2 /* LXKAssetGridViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEC41D0E5754003404B2 /* LXKAssetGridViewController.m */; };
+		EAE0EECC1D0E5754003404B2 /* LXKGridViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEC61D0E5754003404B2 /* LXKGridViewCell.m */; };
+		EAE0EECD1D0E5754003404B2 /* NSIndexSet+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEC81D0E5754003404B2 /* NSIndexSet+Convenience.m */; };
+		EAE0EECE1D0E5754003404B2 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EECA1D0E5754003404B2 /* UICollectionView+Convenience.m */; };
+		EAE0EED01D0E5771003404B2 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EECF1D0E5771003404B2 /* TabBarController.swift */; };
+		EAE0EEDE1D0E5785003404B2 /* NoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED11D0E5785003404B2 /* NoteViewController.swift */; };
+		EAE0EEDF1D0E5785003404B2 /* WriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED21D0E5785003404B2 /* WriteNoteViewController.swift */; };
+		EAE0EEE01D0E5785003404B2 /* WriteWordsNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED31D0E5785003404B2 /* WriteWordsNoteViewController.swift */; };
+		EAE0EEE11D0E5785003404B2 /* WritePhotoNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED41D0E5785003404B2 /* WritePhotoNoteViewController.swift */; };
+		EAE0EEE21D0E5785003404B2 /* WriteURLNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED51D0E5785003404B2 /* WriteURLNoteViewController.swift */; };
+		EAE0EEE31D0E5785003404B2 /* WriteRecordNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED61D0E5785003404B2 /* WriteRecordNoteViewController.swift */; };
+		EAE0EEE41D0E5785003404B2 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED71D0E5785003404B2 /* NoteDetailViewController.swift */; };
+		EAE0EEE51D0E5785003404B2 /* WordsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED81D0E5785003404B2 /* WordsDetailViewController.swift */; };
+		EAE0EEE61D0E5785003404B2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EED91D0E5785003404B2 /* PhotoDetailViewController.swift */; };
+		EAE0EEE71D0E5785003404B2 /* URLDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEDA1D0E5785003404B2 /* URLDetailViewController.swift */; };
+		EAE0EEE81D0E5785003404B2 /* RecordDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEDB1D0E5785003404B2 /* RecordDetailViewController.swift */; };
+		EAE0EEE91D0E5785003404B2 /* NoteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEDC1D0E5785003404B2 /* NoteListTableViewController.swift */; };
+		EAE0EEEA1D0E5785003404B2 /* LXKCollectionViewWaterfallFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEDD1D0E5785003404B2 /* LXKCollectionViewWaterfallFlowLayout.swift */; };
+		EAE0EEEC1D0E5791003404B2 /* TagViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEEB1D0E5791003404B2 /* TagViewController.swift */; };
+		EAE0EEEF1D0E579C003404B2 /* AlbumCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEED1D0E579C003404B2 /* AlbumCollectionViewController.swift */; };
+		EAE0EEF01D0E579C003404B2 /* CDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEEE1D0E579C003404B2 /* CDView.swift */; };
+		EAE0EEF41D0E57AA003404B2 /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF11D0E57AA003404B2 /* MineTableViewController.swift */; };
+		EAE0EEF51D0E57AA003404B2 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF21D0E57AA003404B2 /* EnterPasswordViewController.swift */; };
+		EAE0EEF61D0E57AA003404B2 /* ColorfulCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF31D0E57AA003404B2 /* ColorfulCircleView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EA7968701DC9D3D300ACDEBC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAE0EE5B1D0E5051003404B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA7968671DC9D3D300ACDEBC;
+			remoteInfo = "乐享";
+		};
 		EAE0EE781D0E5051003404B2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EAE0EE5B1D0E5051003404B2 /* Project object */;
@@ -33,13 +87,39 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		EA7968761DC9D3D300ACDEBC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				EA7968721DC9D3D300ACDEBC /* 乐享.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		0780278DA84EBEB91BA590D2 /* Pods_HappyShare.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HappyShare.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		475E5D32BDD98BE9D58823AC /* Pods-HappyShare.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyShare.release.xcconfig"; path = "Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare.release.xcconfig"; sourceTree = "<group>"; };
+		EA7968681DC9D3D300ACDEBC /* 乐享.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "乐享.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA7968781DC9D3FD00ACDEBC /* 乐享.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = "乐享.entitlements"; sourceTree = "<group>"; };
+		EA7968791DC9D3FD00ACDEBC /* ShareViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
+		EA79687A1DC9D3FD00ACDEBC /* LXKFileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXKFileManager.swift; sourceTree = "<group>"; };
+		EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguretionTableViewController.swift; sourceTree = "<group>"; };
+		EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
+		EA79687D1DC9D3FD00ACDEBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAB865191DC892B100AB7B87 /* HappyShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyShare.entitlements; sourceTree = "<group>"; };
+		EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EAE0EE631D0E5051003404B2 /* HappyShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EAE0EE661D0E5051003404B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EAE0EE681D0E5051003404B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		EAE0EE6B1D0E5051003404B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		EAE0EE701D0E5051003404B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EAE0EE721D0E5051003404B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EAE0EE771D0E5051003404B2 /* HappyShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAE0EE7B1D0E5051003404B2 /* HappyShareTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyShareTests.swift; sourceTree = "<group>"; };
@@ -47,13 +127,63 @@
 		EAE0EE821D0E5051003404B2 /* HappyShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HappyShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAE0EE861D0E5051003404B2 /* HappyShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HappyShareUITests.swift; sourceTree = "<group>"; };
 		EAE0EE881D0E5051003404B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EAE0EE9E1D0E56FC003404B2 /* HappyShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HappyShare-Bridging-Header.h"; path = "../CoreData/HappyShare-Bridging-Header.h"; sourceTree = "<group>"; };
+		EAE0EE9F1D0E56FC003404B2 /* HappyShare.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = HappyShare.xcdatamodel; sourceTree = "<group>"; };
+		EAE0EEA11D0E56FC003404B2 /* project副本.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "project副本.plist"; sourceTree = "<group>"; };
+		EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXKCoreDataManager.swift; sourceTree = "<group>"; };
+		EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HSCoreDataManager.swift; sourceTree = "<group>"; };
+		EAE0EEB31D0E5712003404B2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EAE0EEB41D0E5712003404B2 /* Note.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Note.storyboard; sourceTree = "<group>"; };
+		EAE0EEB51D0E5712003404B2 /* Tag.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Tag.storyboard; sourceTree = "<group>"; };
+		EAE0EEB61D0E5712003404B2 /* Album.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Album.storyboard; sourceTree = "<group>"; };
+		EAE0EEB71D0E5712003404B2 /* Mine.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Mine.storyboard; sourceTree = "<group>"; };
+		EAE0EEB81D0E5712003404B2 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		EAE0EEBF1D0E5734003404B2 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EAE0EEC01D0E5734003404B2 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
+		EAE0EEC31D0E5754003404B2 /* LXKAssetGridViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXKAssetGridViewController.h; sourceTree = "<group>"; };
+		EAE0EEC41D0E5754003404B2 /* LXKAssetGridViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXKAssetGridViewController.m; sourceTree = "<group>"; };
+		EAE0EEC51D0E5754003404B2 /* LXKGridViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LXKGridViewCell.h; sourceTree = "<group>"; };
+		EAE0EEC61D0E5754003404B2 /* LXKGridViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LXKGridViewCell.m; sourceTree = "<group>"; };
+		EAE0EEC71D0E5754003404B2 /* NSIndexSet+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+Convenience.h"; sourceTree = "<group>"; };
+		EAE0EEC81D0E5754003404B2 /* NSIndexSet+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+Convenience.m"; sourceTree = "<group>"; };
+		EAE0EEC91D0E5754003404B2 /* UICollectionView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Convenience.h"; sourceTree = "<group>"; };
+		EAE0EECA1D0E5754003404B2 /* UICollectionView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Convenience.m"; sourceTree = "<group>"; };
+		EAE0EECF1D0E5771003404B2 /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../Vender/TabBarController.swift; sourceTree = "<group>"; };
+		EAE0EED11D0E5785003404B2 /* NoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED21D0E5785003404B2 /* WriteNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED31D0E5785003404B2 /* WriteWordsNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteWordsNoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED41D0E5785003404B2 /* WritePhotoNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WritePhotoNoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED51D0E5785003404B2 /* WriteURLNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteURLNoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED61D0E5785003404B2 /* WriteRecordNoteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteRecordNoteViewController.swift; sourceTree = "<group>"; };
+		EAE0EED71D0E5785003404B2 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
+		EAE0EED81D0E5785003404B2 /* WordsDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordsDetailViewController.swift; sourceTree = "<group>"; };
+		EAE0EED91D0E5785003404B2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		EAE0EEDA1D0E5785003404B2 /* URLDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLDetailViewController.swift; sourceTree = "<group>"; };
+		EAE0EEDB1D0E5785003404B2 /* RecordDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordDetailViewController.swift; sourceTree = "<group>"; };
+		EAE0EEDC1D0E5785003404B2 /* NoteListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteListTableViewController.swift; sourceTree = "<group>"; };
+		EAE0EEDD1D0E5785003404B2 /* LXKCollectionViewWaterfallFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LXKCollectionViewWaterfallFlowLayout.swift; sourceTree = "<group>"; };
+		EAE0EEEB1D0E5791003404B2 /* TagViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagViewController.swift; sourceTree = "<group>"; };
+		EAE0EEED1D0E579C003404B2 /* AlbumCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumCollectionViewController.swift; sourceTree = "<group>"; };
+		EAE0EEEE1D0E579C003404B2 /* CDView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CDView.swift; sourceTree = "<group>"; };
+		EAE0EEF11D0E57AA003404B2 /* MineTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineTableViewController.swift; sourceTree = "<group>"; };
+		EAE0EEF21D0E57AA003404B2 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		EAE0EEF31D0E57AA003404B2 /* ColorfulCircleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorfulCircleView.swift; sourceTree = "<group>"; };
+		FC9D89D9A85A061CD60DCFB3 /* Pods-HappyShare.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HappyShare.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		EA7968651DC9D3D300ACDEBC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAE0EE601D0E5051003404B2 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16BAA32FA116AB916188B80C /* Pods_HappyShare.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,13 +204,46 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		703F46833085339E68CFD633 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FC9D89D9A85A061CD60DCFB3 /* Pods-HappyShare.debug.xcconfig */,
+				475E5D32BDD98BE9D58823AC /* Pods-HappyShare.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		D7A04604E545069D98950ED4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0780278DA84EBEB91BA590D2 /* Pods_HappyShare.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA7968691DC9D3D300ACDEBC /* 乐享 */ = {
+			isa = PBXGroup;
+			children = (
+				EA7968781DC9D3FD00ACDEBC /* 乐享.entitlements */,
+				EA7968791DC9D3FD00ACDEBC /* ShareViewController.swift */,
+				EA79687A1DC9D3FD00ACDEBC /* LXKFileManager.swift */,
+				EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */,
+				EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */,
+				EA79687D1DC9D3FD00ACDEBC /* Info.plist */,
+			);
+			path = "乐享";
+			sourceTree = "<group>";
+		};
 		EAE0EE5A1D0E5051003404B2 = {
 			isa = PBXGroup;
 			children = (
 				EAE0EE651D0E5051003404B2 /* HappyShare */,
 				EAE0EE7A1D0E5051003404B2 /* HappyShareTests */,
 				EAE0EE851D0E5051003404B2 /* HappyShareUITests */,
+				EA7968691DC9D3D300ACDEBC /* 乐享 */,
 				EAE0EE641D0E5051003404B2 /* Products */,
+				703F46833085339E68CFD633 /* Pods */,
+				D7A04604E545069D98950ED4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -90,6 +253,7 @@
 				EAE0EE631D0E5051003404B2 /* HappyShare.app */,
 				EAE0EE771D0E5051003404B2 /* HappyShareTests.xctest */,
 				EAE0EE821D0E5051003404B2 /* HappyShareUITests.xctest */,
+				EA7968681DC9D3D300ACDEBC /* 乐享.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,11 +261,14 @@
 		EAE0EE651D0E5051003404B2 /* HappyShare */ = {
 			isa = PBXGroup;
 			children = (
-				EAE0EE661D0E5051003404B2 /* AppDelegate.swift */,
-				EAE0EE681D0E5051003404B2 /* ViewController.swift */,
-				EAE0EE6A1D0E5051003404B2 /* Main.storyboard */,
+				EAB865191DC892B100AB7B87 /* HappyShare.entitlements */,
+				EAE0EE991D0E5253003404B2 /* Expand */,
+				EAE0EE981D0E5241003404B2 /* CoreData */,
+				EAE0EE971D0E5147003404B2 /* Storyboards */,
+				EAE0EE961D0E5116003404B2 /* Vender */,
+				EAE0EE951D0E50FB003404B2 /* SupportingFiles */,
+				EAE0EE941D0E5075003404B2 /* Main */,
 				EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */,
-				EAE0EE6F1D0E5051003404B2 /* LaunchScreen.storyboard */,
 				EAE0EE721D0E5051003404B2 /* Info.plist */,
 			);
 			path = HappyShare;
@@ -125,20 +292,163 @@
 			path = HappyShareUITests;
 			sourceTree = "<group>";
 		};
+		EAE0EE941D0E5075003404B2 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EECF1D0E5771003404B2 /* TabBarController.swift */,
+				EAE0EE9D1D0E5639003404B2 /* Mine */,
+				EAE0EE9C1D0E5632003404B2 /* Album */,
+				EAE0EE9B1D0E562B003404B2 /* Tag */,
+				EAE0EE9A1D0E5623003404B2 /* Note */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		EAE0EE951D0E50FB003404B2 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EE9E1D0E56FC003404B2 /* HappyShare-Bridging-Header.h */,
+				EAE0EEBF1D0E5734003404B2 /* AppDelegate.swift */,
+				EAE0EEC01D0E5734003404B2 /* Global.swift */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		EAE0EE961D0E5116003404B2 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Vender;
+			sourceTree = "<group>";
+		};
+		EAE0EE971D0E5147003404B2 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EEB31D0E5712003404B2 /* Main.storyboard */,
+				EAE0EEB41D0E5712003404B2 /* Note.storyboard */,
+				EAE0EEB51D0E5712003404B2 /* Tag.storyboard */,
+				EAE0EEB61D0E5712003404B2 /* Album.storyboard */,
+				EAE0EEB71D0E5712003404B2 /* Mine.storyboard */,
+				EAE0EEB81D0E5712003404B2 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		EAE0EE981D0E5241003404B2 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */,
+				EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */,
+				EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */,
+				EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */,
+				EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */,
+				EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */,
+				EAE0EE9F1D0E56FC003404B2 /* HappyShare.xcdatamodel */,
+				EAE0EEA11D0E56FC003404B2 /* project副本.plist */,
+				EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */,
+				EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		EAE0EE991D0E5253003404B2 /* Expand */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EEC31D0E5754003404B2 /* LXKAssetGridViewController.h */,
+				EAE0EEC41D0E5754003404B2 /* LXKAssetGridViewController.m */,
+				EAE0EEC51D0E5754003404B2 /* LXKGridViewCell.h */,
+				EAE0EEC61D0E5754003404B2 /* LXKGridViewCell.m */,
+				EAE0EEC71D0E5754003404B2 /* NSIndexSet+Convenience.h */,
+				EAE0EEC81D0E5754003404B2 /* NSIndexSet+Convenience.m */,
+				EAE0EEC91D0E5754003404B2 /* UICollectionView+Convenience.h */,
+				EAE0EECA1D0E5754003404B2 /* UICollectionView+Convenience.m */,
+			);
+			path = Expand;
+			sourceTree = "<group>";
+		};
+		EAE0EE9A1D0E5623003404B2 /* Note */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EED11D0E5785003404B2 /* NoteViewController.swift */,
+				EAE0EED21D0E5785003404B2 /* WriteNoteViewController.swift */,
+				EAE0EED31D0E5785003404B2 /* WriteWordsNoteViewController.swift */,
+				EAE0EED41D0E5785003404B2 /* WritePhotoNoteViewController.swift */,
+				EAE0EED51D0E5785003404B2 /* WriteURLNoteViewController.swift */,
+				EAE0EED61D0E5785003404B2 /* WriteRecordNoteViewController.swift */,
+				EAE0EED71D0E5785003404B2 /* NoteDetailViewController.swift */,
+				EAE0EED81D0E5785003404B2 /* WordsDetailViewController.swift */,
+				EAE0EED91D0E5785003404B2 /* PhotoDetailViewController.swift */,
+				EAE0EEDA1D0E5785003404B2 /* URLDetailViewController.swift */,
+				EAE0EEDB1D0E5785003404B2 /* RecordDetailViewController.swift */,
+				EAE0EEDC1D0E5785003404B2 /* NoteListTableViewController.swift */,
+				EAE0EEDD1D0E5785003404B2 /* LXKCollectionViewWaterfallFlowLayout.swift */,
+			);
+			path = Note;
+			sourceTree = "<group>";
+		};
+		EAE0EE9B1D0E562B003404B2 /* Tag */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EEEB1D0E5791003404B2 /* TagViewController.swift */,
+			);
+			path = Tag;
+			sourceTree = "<group>";
+		};
+		EAE0EE9C1D0E5632003404B2 /* Album */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EEED1D0E579C003404B2 /* AlbumCollectionViewController.swift */,
+				EAE0EEEE1D0E579C003404B2 /* CDView.swift */,
+			);
+			path = Album;
+			sourceTree = "<group>";
+		};
+		EAE0EE9D1D0E5639003404B2 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0EEF11D0E57AA003404B2 /* MineTableViewController.swift */,
+				EAE0EEF21D0E57AA003404B2 /* EnterPasswordViewController.swift */,
+				EAE0EEF31D0E57AA003404B2 /* ColorfulCircleView.swift */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EAE0EE621D0E5051003404B2 /* HappyShare */ = {
+		EA7968671DC9D3D300ACDEBC /* 乐享 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EAE0EE8B1D0E5051003404B2 /* Build configuration list for PBXNativeTarget "HappyShare" */;
+			buildConfigurationList = EA7968751DC9D3D300ACDEBC /* Build configuration list for PBXNativeTarget "乐享" */;
 			buildPhases = (
-				EAE0EE5F1D0E5051003404B2 /* Sources */,
-				EAE0EE601D0E5051003404B2 /* Frameworks */,
-				EAE0EE611D0E5051003404B2 /* Resources */,
+				EA7968641DC9D3D300ACDEBC /* Sources */,
+				EA7968651DC9D3D300ACDEBC /* Frameworks */,
+				EA7968661DC9D3D300ACDEBC /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+			);
+			name = "乐享";
+			productName = "乐享";
+			productReference = EA7968681DC9D3D300ACDEBC /* 乐享.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		EAE0EE621D0E5051003404B2 /* HappyShare */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EAE0EE8B1D0E5051003404B2 /* Build configuration list for PBXNativeTarget "HappyShare" */;
+			buildPhases = (
+				C009487A00FA18ADE2837CE2 /* 📦 Check Pods Manifest.lock */,
+				EAE0EE5F1D0E5051003404B2 /* Sources */,
+				EAE0EE601D0E5051003404B2 /* Frameworks */,
+				EAE0EE611D0E5051003404B2 /* Resources */,
+				6991CD376659716C7DD070A0 /* 📦 Embed Pods Frameworks */,
+				797CB3AD5CE083A07A214BEC /* 📦 Copy Pods Resources */,
+				EA7968761DC9D3D300ACDEBC /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				EA7968711DC9D3D300ACDEBC /* PBXTargetDependency */,
 			);
 			name = HappyShare;
 			productName = HappyShare;
@@ -187,19 +497,41 @@
 		EAE0EE5B1D0E5051003404B2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0730;
+				LastSwiftUpdateCheck = 0810;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "李现科";
 				TargetAttributes = {
+					EA7968671DC9D3D300ACDEBC = {
+						CreatedOnToolsVersion = 8.1;
+						DevelopmentTeam = FCF47GAA3V;
+						LastSwiftMigration = 0810;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
 					EAE0EE621D0E5051003404B2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FCF47GAA3V;
+						LastSwiftMigration = 0800;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					EAE0EE761D0E5051003404B2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FCF47GAA3V;
+						LastSwiftMigration = 0800;
 						TestTargetID = EAE0EE621D0E5051003404B2;
 					};
 					EAE0EE811D0E5051003404B2 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = FCF47GAA3V;
+						LastSwiftMigration = 0800;
 						TestTargetID = EAE0EE621D0E5051003404B2;
 					};
 				};
@@ -220,18 +552,33 @@
 				EAE0EE621D0E5051003404B2 /* HappyShare */,
 				EAE0EE761D0E5051003404B2 /* HappyShareTests */,
 				EAE0EE811D0E5051003404B2 /* HappyShareUITests */,
+				EA7968671DC9D3D300ACDEBC /* 乐享 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		EA7968661DC9D3D300ACDEBC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */,
+				EA7968811DC9D3FD00ACDEBC /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAE0EE611D0E5051003404B2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE0EE711D0E5051003404B2 /* LaunchScreen.storyboard in Resources */,
+				EAE0EEBA1D0E5712003404B2 /* Note.storyboard in Resources */,
+				EAE0EEBE1D0E5712003404B2 /* LaunchScreen.storyboard in Resources */,
+				EAE0EEB91D0E5712003404B2 /* Main.storyboard in Resources */,
+				EAE0EEBC1D0E5712003404B2 /* Album.storyboard in Resources */,
 				EAE0EE6E1D0E5051003404B2 /* Assets.xcassets in Resources */,
-				EAE0EE6C1D0E5051003404B2 /* Main.storyboard in Resources */,
+				EAE0EEBD1D0E5712003404B2 /* Mine.storyboard in Resources */,
+				EAE0EEBB1D0E5712003404B2 /* Tag.storyboard in Resources */,
+				EAE0EEAB1D0E56FC003404B2 /* project副本.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,13 +598,106 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		6991CD376659716C7DD070A0 /* 📦 Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		797CB3AD5CE083A07A214BEC /* 📦 Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C009487A00FA18ADE2837CE2 /* 📦 Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "📦 Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		EA7968641DC9D3D300ACDEBC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EA7968891DC9D47100ACDEBC /* LXKCoreDataManager.swift in Sources */,
+				EA79688A1DC9D47100ACDEBC /* HSCoreDataManager.swift in Sources */,
+				EA7968801DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift in Sources */,
+				EA79687E1DC9D3FD00ACDEBC /* ShareViewController.swift in Sources */,
+				EA79687F1DC9D3FD00ACDEBC /* LXKFileManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		EAE0EE5F1D0E5051003404B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAE0EE691D0E5051003404B2 /* ViewController.swift in Sources */,
-				EAE0EE671D0E5051003404B2 /* AppDelegate.swift in Sources */,
+				EAE0EEB11D0E56FC003404B2 /* LXKCoreDataManager.swift in Sources */,
+				EAE0EED01D0E5771003404B2 /* TabBarController.swift in Sources */,
+				EAE0EECE1D0E5754003404B2 /* UICollectionView+Convenience.m in Sources */,
+				EAE0EEEA1D0E5785003404B2 /* LXKCollectionViewWaterfallFlowLayout.swift in Sources */,
+				EAE0EEE91D0E5785003404B2 /* NoteListTableViewController.swift in Sources */,
+				EAE0EEE61D0E5785003404B2 /* PhotoDetailViewController.swift in Sources */,
+				EAE0EEA91D0E56FC003404B2 /* HappyShare.xcdatamodel in Sources */,
+				EAE0EEDF1D0E5785003404B2 /* WriteNoteViewController.swift in Sources */,
+				EAE0EEF61D0E57AA003404B2 /* ColorfulCircleView.swift in Sources */,
+				EAE0EEF01D0E579C003404B2 /* CDView.swift in Sources */,
+				EAE0EEF51D0E57AA003404B2 /* EnterPasswordViewController.swift in Sources */,
+				EAE0EECB1D0E5754003404B2 /* LXKAssetGridViewController.m in Sources */,
+				EAE0EEE31D0E5785003404B2 /* WriteRecordNoteViewController.swift in Sources */,
+				EAE0EEB21D0E56FC003404B2 /* HSCoreDataManager.swift in Sources */,
+				EAE0EEF41D0E57AA003404B2 /* MineTableViewController.swift in Sources */,
+				EAE0EEE71D0E5785003404B2 /* URLDetailViewController.swift in Sources */,
+				EAE0EECC1D0E5754003404B2 /* LXKGridViewCell.m in Sources */,
+				EAE0EEE41D0E5785003404B2 /* NoteDetailViewController.swift in Sources */,
+				EADABDA21E81050500F7EE7E /* Tag+CoreDataClass.swift in Sources */,
+				EADABDA11E81050500F7EE7E /* Note+CoreDataProperties.swift in Sources */,
+				EAE0EEDE1D0E5785003404B2 /* NoteViewController.swift in Sources */,
+				EAE0EEE11D0E5785003404B2 /* WritePhotoNoteViewController.swift in Sources */,
+				EAE0EEC21D0E5734003404B2 /* Global.swift in Sources */,
+				EAE0EEE81D0E5785003404B2 /* RecordDetailViewController.swift in Sources */,
+				EAE0EEEF1D0E579C003404B2 /* AlbumCollectionViewController.swift in Sources */,
+				EAE0EEE21D0E5785003404B2 /* WriteURLNoteViewController.swift in Sources */,
+				EAE0EECD1D0E5754003404B2 /* NSIndexSet+Convenience.m in Sources */,
+				EADABDA41E81050500F7EE7E /* Album+CoreDataClass.swift in Sources */,
+				EAE0EEE51D0E5785003404B2 /* WordsDetailViewController.swift in Sources */,
+				EAE0EEE01D0E5785003404B2 /* WriteWordsNoteViewController.swift in Sources */,
+				EADABDA31E81050500F7EE7E /* Tag+CoreDataProperties.swift in Sources */,
+				EADABDA01E81050500F7EE7E /* Note+CoreDataClass.swift in Sources */,
+				EAE0EEEC1D0E5791003404B2 /* TagViewController.swift in Sources */,
+				EADABDA51E81050500F7EE7E /* Album+CoreDataProperties.swift in Sources */,
+				EAE0EEC11D0E5734003404B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +720,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		EA7968711DC9D3D300ACDEBC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA7968671DC9D3D300ACDEBC /* 乐享 */;
+			targetProxy = EA7968701DC9D3D300ACDEBC /* PBXContainerItemProxy */;
+		};
 		EAE0EE791D0E5051003404B2 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = EAE0EE621D0E5051003404B2 /* HappyShare */;
@@ -292,26 +737,50 @@
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		EAE0EE6A1D0E5051003404B2 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EAE0EE6B1D0E5051003404B2 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		EAE0EE6F1D0E5051003404B2 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EAE0EE701D0E5051003404B2 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
+		EA7968731DC9D3D300ACDEBC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "乐享/乐享.entitlements";
+				DEVELOPMENT_TEAM = FCF47GAA3V;
+				INFOPLIST_FILE = "乐享/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lixianke.HappyShare.--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		EA7968741DC9D3D300ACDEBC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CODE_SIGN_ENTITLEMENTS = "乐享/乐享.entitlements";
+				DEVELOPMENT_TEAM = FCF47GAA3V;
+				INFOPLIST_FILE = "乐享/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.lixianke.HappyShare.--";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		EAE0EE891D0E5051003404B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -397,23 +866,38 @@
 		};
 		EAE0EE8C1D0E5051003404B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FC9D89D9A85A061CD60DCFB3 /* Pods-HappyShare.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HappyShare/HappyShare.entitlements;
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HappyShare/CoreData/HappyShare-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		EAE0EE8D1D0E5051003404B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 475E5D32BDD98BE9D58823AC /* Pods-HappyShare.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = HappyShare/HappyShare.entitlements;
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShare/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShare;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "HappyShare/CoreData/HappyShare-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -421,10 +905,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyShare.app/HappyShare";
 			};
 			name = Debug;
@@ -433,10 +919,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShareTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShareTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HappyShare.app/HappyShare";
 			};
 			name = Release;
@@ -444,10 +932,12 @@
 		EAE0EE921D0E5051003404B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HappyShare;
 			};
 			name = Debug;
@@ -455,10 +945,12 @@
 		EAE0EE931D0E5051003404B2 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				DEVELOPMENT_TEAM = FCF47GAA3V;
 				INFOPLIST_FILE = HappyShareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lixianke.HappyShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = HappyShare;
 			};
 			name = Release;
@@ -466,6 +958,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		EA7968751DC9D3D300ACDEBC /* Build configuration list for PBXNativeTarget "乐享" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EA7968731DC9D3D300ACDEBC /* Debug */,
+				EA7968741DC9D3D300ACDEBC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		EAE0EE5E1D0E5051003404B2 /* Build configuration list for PBXProject "HappyShare" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -482,6 +983,7 @@
 				EAE0EE8D1D0E5051003404B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAE0EE8E1D0E5051003404B2 /* Build configuration list for PBXNativeTarget "HappyShareTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +992,7 @@
 				EAE0EE901D0E5051003404B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EAE0EE911D0E5051003404B2 /* Build configuration list for PBXNativeTarget "HappyShareUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +1001,7 @@
 				EAE0EE931D0E5051003404B2 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

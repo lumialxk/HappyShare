@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="j1y-V4-xli">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--Share View Controller-->
+        <scene sceneID="ceB-am-kn3">
+            <objects>
+                <viewController id="j1y-V4-xli" customClass="ShareViewController" customModule="乐享" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8bI-gs-bmD"/>
+                        <viewControllerLayoutGuide type="bottom" id="d5i-Ba-RvD"/>
+                    </layoutGuides>
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="wbc-yd-nQP">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CEy-Cv-SGf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="539" y="97"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="b1H-t8-D8K">
+            <objects>
+                <viewController storyboardIdentifier="ConfiguretionViewController" id="JSa-fr-C34" customClass="ConfiguretionViewController" customModule="乐享" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="bTN-pX-Ruo"/>
+                        <viewControllerLayoutGuide type="bottom" id="wwd-n8-QZ2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kz8-ys-6zi">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Xvh-YO-CcH">
+                                <rect key="frame" x="0.0" y="80" width="592" height="504"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.50588235290000005" green="0.84705882349999995" blue="0.81176470590000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JSa-fr-C34" id="B9G-Zy-b0W"/>
+                                    <outlet property="delegate" destination="JSa-fr-C34" id="ghz-31-vrA"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="wwd-n8-QZ2" firstAttribute="top" secondItem="Xvh-YO-CcH" secondAttribute="bottom" constant="16" id="5xP-C4-yVZ"/>
+                            <constraint firstAttribute="trailing" secondItem="Xvh-YO-CcH" secondAttribute="trailing" constant="8" id="AmL-W4-ooY"/>
+                            <constraint firstItem="Xvh-YO-CcH" firstAttribute="leading" secondItem="kz8-ys-6zi" secondAttribute="leading" id="Sbr-m1-eCY"/>
+                            <constraint firstItem="Xvh-YO-CcH" firstAttribute="top" secondItem="bTN-pX-Ruo" secondAttribute="bottom" constant="16" id="zhe-GD-7At"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="9CU-9R-KSB">
+                        <barButtonItem key="leftBarButtonItem" title="返回" id="GIV-aW-BX6">
+                            <connections>
+                                <action selector="back:" destination="JSa-fr-C34" id="e90-Pm-qlX"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="完成" id="JRb-29-IfG">
+                            <connections>
+                                <action selector="complete:" destination="JSa-fr-C34" id="zcr-Jf-v64"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jhn-Rg-BHx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1166" y="97"/>
+        </scene>
+    </scenes>
+</document>

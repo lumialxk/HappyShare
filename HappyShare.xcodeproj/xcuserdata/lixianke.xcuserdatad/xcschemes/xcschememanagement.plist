@@ -9,9 +9,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>test.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>8</integer>
+		</dict>
+		<key>乐享.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>7</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>EA7968671DC9D3D300ACDEBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EA79688E1DC9E11E00ACDEBC</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>EAE0EE621D0E5051003404B2</key>
 		<dict>
 			<key>primary</key>

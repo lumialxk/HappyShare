@@ -1,0 +1,88 @@
+PODS:
+  - IQKeyboardManager (4.0.3)
+  - KSCrash (1.5.7):
+    - KSCrash/Installations (= 1.5.7)
+  - KSCrash/Installations (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting
+  - KSCrash/no-arc (1.5.7)
+  - KSCrash/Recording (1.5.7):
+    - KSCrash/no-arc
+  - KSCrash/Reporting (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters (= 1.5.7)
+    - KSCrash/Reporting/MessageUI (= 1.5.7)
+    - KSCrash/Reporting/Sinks (= 1.5.7)
+    - KSCrash/Reporting/Tools (= 1.5.7)
+  - KSCrash/Reporting/Filters (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Alert (= 1.5.7)
+    - KSCrash/Reporting/Filters/AppleFmt (= 1.5.7)
+    - KSCrash/Reporting/Filters/Base (= 1.5.7)
+    - KSCrash/Reporting/Filters/Basic (= 1.5.7)
+    - KSCrash/Reporting/Filters/GZip (= 1.5.7)
+    - KSCrash/Reporting/Filters/JSON (= 1.5.7)
+    - KSCrash/Reporting/Filters/Sets (= 1.5.7)
+    - KSCrash/Reporting/Filters/Stringify (= 1.5.7)
+    - KSCrash/Reporting/Filters/Tools (= 1.5.7)
+  - KSCrash/Reporting/Filters/Alert (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/AppleFmt (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Base (1.5.7):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Filters/Basic (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/GZip (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/JSON (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Sets (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/AppleFmt
+    - KSCrash/Reporting/Filters/Base
+    - KSCrash/Reporting/Filters/Basic
+    - KSCrash/Reporting/Filters/GZip
+    - KSCrash/Reporting/Filters/JSON
+    - KSCrash/Reporting/Filters/Stringify
+  - KSCrash/Reporting/Filters/Stringify (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters/Base
+  - KSCrash/Reporting/Filters/Tools (1.5.7):
+    - KSCrash/Recording
+  - KSCrash/Reporting/MessageUI (1.5.7):
+    - KSCrash/Recording
+  - KSCrash/Reporting/Sinks (1.5.7):
+    - KSCrash/Recording
+    - KSCrash/Reporting/Filters
+    - KSCrash/Reporting/Tools
+  - KSCrash/Reporting/Tools (1.5.7):
+    - KSCrash/Recording
+  - MJRefresh (3.1.0)
+  - SDWebImage (3.7.6):
+    - SDWebImage/Core (= 3.7.6)
+  - SDWebImage/Core (3.7.6)
+  - SVProgressHUD (2.0.3)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - KSCrash
+  - MJRefresh
+  - SDWebImage
+  - SVProgressHUD
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: be9695ffc5a52077deb4847608f338771022d6d1
+  KSCrash: cb2c92ee0c414db17d60a676a60fe36e3cdc6e5b
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
+  SDWebImage: c325cf02c30337336b95beff20a13df489ec0ec9
+  SVProgressHUD: b0830714205bea1317ea1a2ebc71e5633af334d4
+
+PODFILE CHECKSUM: 6fdd6c6c0daee5aa323ec020229def145a4e14e9
+
+COCOAPODS: 1.0.0
