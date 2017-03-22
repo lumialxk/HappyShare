@@ -30,6 +30,7 @@
 //#define KSLogger_LocalLevel TRACE
 #include "KSLogger.h"
 
+#include <dirent.h>
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
@@ -47,6 +48,164 @@
 #endif
 
 
+// ============================================================================
+#pragma mark - Utility -
+// ============================================================================
+
+static bool canDeletePath(const char* path)
+{
+    const char* lastComponent = strrchr(path, '/');
+    if(lastComponent == NULL)
+    {
+        lastComponent = path;
+    }
+    else
+    {
+        lastComponent++;
+    }
+    if(strcmp(lastComponent, ".") == 0)
+    {
+        return false;
+    }
+    if(strcmp(lastComponent, "..") == 0)
+    {
+        return false;
+    }
+    return true;
+}
+
+static int dirContentsCount(const char* path)
+{
+    int count = 0;
+    DIR* dir = opendir(path);
+    if(dir == NULL)
+    {
+        KSLOG_ERROR("Error reading directory %s: %s", strerror(errno));
+        return 0;
+    }
+    
+    struct dirent* ent;
+    while((ent = readdir(dir)))
+    {
+        count++;
+    }
+    
+    closedir(dir);
+    return count;
+}
+
+static void dirContents(const char* path, char*** entries, int* count)
+{
+    DIR* dir = NULL;
+    char** entryList = NULL;
+    int entryCount = dirContentsCount(path);
+    if(entryCount <= 0)
+    {
+        goto done;
+    }
+    dir = opendir(path);
+    if(dir == NULL)
+    {
+        KSLOG_ERROR("Error reading directory %s: %s", strerror(errno));
+        goto done;
+    }
+    
+    entryList = calloc((unsigned)entryCount, sizeof(char*));
+    struct dirent* ent;
+    int index = 0;
+    while((ent = readdir(dir)))
+    {
+        if(index >= entryCount)
+        {
+            KSLOG_ERROR("Contents of %s have been mutated", path);
+            goto done;
+        }
+        entryList[index] = strdup(ent->d_name);
+        index++;
+    }
+    
+done:
+    if(dir != NULL)
+    {
+        closedir(dir);
+    }
+    if(entryList == NULL)
+    {
+        entryCount = 0;
+    }
+    *entries = entryList;
+    *count = entryCount;
+}
+
+static void freeDirListing(char** entries, int count)
+{
+    if(entries != NULL)
+    {
+        for(int i = 0; i < count; i++)
+        {
+            char* ptr = entries[i];
+            if(ptr != NULL)
+            {
+                free(ptr);
+            }
+        }
+        free(entries);
+    }
+}
+
+static bool deletePathContents(const char* path, bool deleteTopLevelPathAlso)
+{
+    struct stat statStruct = {0};
+    if(stat(path, &statStruct) != 0)
+    {
+        KSLOG_ERROR("Could not stat %s: %s", strerror(errno));
+        return false;
+    }
+    if(S_ISDIR(statStruct.st_mode))
+    {
+        char** entries = NULL;
+        int entryCount = 0;
+        dirContents(path, &entries, &entryCount);
+        
+        int bufferLength = KSFU_MAX_PATH_LENGTH;
+        char* pathBuffer = malloc((unsigned)bufferLength);
+        snprintf(pathBuffer, bufferLength, "%s/", path);
+        char* pathPtr = pathBuffer + strlen(pathBuffer);
+        int pathRemainingLength = bufferLength - (int)(pathPtr - pathBuffer);
+        
+        for(int i = 0; i < entryCount; i++)
+        {
+            char* entry = entries[i];
+            if(entry != NULL && canDeletePath(entry))
+            {
+                strncpy(pathPtr, entry, pathRemainingLength);
+                deletePathContents(pathBuffer, true);
+            }
+        }
+        
+        free(pathBuffer);
+        freeDirListing(entries, entryCount);
+        if(deleteTopLevelPathAlso)
+        {
+            ksfu_removeFile(path, false);
+        }
+    }
+    else if(S_ISREG(statStruct.st_mode))
+    {
+        ksfu_removeFile(path, false);
+    }
+    else
+    {
+        KSLOG_ERROR("Could not delete %s: Not a regular file.", path);
+        return false;
+    }
+    return true;
+}
+
+// ============================================================================
+#pragma mark - API -
+// ============================================================================
+
 const char* ksfu_lastPathEntry(const char* const path)
 {
     if(path == NULL)
@@ -58,14 +217,12 @@ const char* ksfu_lastPathEntry(const char* const path)
     return lastFile == NULL ? path : lastFile + 1;
 }
 
-bool ksfu_writeBytesToFD(const int fd,
-                         const char* const bytes,
-                         ssize_t length)
+bool ksfu_writeBytesToFD(const int fd, const char* const bytes, int length)
 {
     const char* pos = bytes;
     while(length > 0)
     {
-        ssize_t bytesWritten = write(fd, pos, (size_t)length);
+        int bytesWritten = (int)write(fd, pos, (unsigned)length);
         if(bytesWritten == -1)
         {
             KSLOG_ERROR("Could not write to fd %d: %s", fd, strerror(errno));
@@ -77,14 +234,12 @@ bool ksfu_writeBytesToFD(const int fd,
     return true;
 }
 
-bool ksfu_readBytesFromFD(const int fd,
-                          char* const bytes,
-                          ssize_t length)
+bool ksfu_readBytesFromFD(const int fd, char* const bytes, int length)
 {
     char* pos = bytes;
     while(length > 0)
     {
-        ssize_t bytesRead = read(fd, pos, (size_t)length);
+        int bytesRead = (int)read(fd, pos, (unsigned)length);
         if(bytesRead == -1)
         {
             KSLOG_ERROR("Could not write to fd %d: %s", fd, strerror(errno));
@@ -96,67 +251,93 @@ bool ksfu_readBytesFromFD(const int fd,
     return true;
 }
 
-bool ksfu_readEntireFile(const char* const path,
-                         char** data,
-                         size_t* length)
+bool ksfu_readEntireFile(const char* const path, char** data, int* length, int maxLength)
 {
+    bool isSuccessful = false;
+    int bytesRead = 0;
+    char* mem = NULL;
+    int fd = -1;
+    int bytesToRead = maxLength;
+
     struct stat st;
     if(stat(path, &st) < 0)
     {
         KSLOG_ERROR("Could not stat %s: %s", path, strerror(errno));
-        return false;
+        goto done;
     }
 
-    void* mem = NULL;
-    int fd = open(path, O_RDONLY);
+    fd = open(path, O_RDONLY);
     if(fd < 0)
     {
         KSLOG_ERROR("Could not open %s: %s", path, strerror(errno));
-        return false;
+        goto done;
     }
 
-    mem = malloc((size_t)st.st_size);
+    if(bytesToRead == 0 || bytesToRead >= (int)st.st_size)
+    {
+        bytesToRead = (int)st.st_size;
+    }
+    else if(bytesToRead > 0)
+    {
+        if(lseek(fd, -bytesToRead, SEEK_END) < 0)
+        {
+            KSLOG_ERROR("Could not seek to %d from end of %s: %s", -bytesToRead, path, strerror(errno));
+            goto done;
+        }
+    }
+
+    mem = malloc((unsigned)bytesToRead + 1);
     if(mem == NULL)
     {
         KSLOG_ERROR("Out of memory");
-        goto failed;
+        goto done;
     }
 
-    if(!ksfu_readBytesFromFD(fd, mem, (ssize_t)st.st_size))
+    if(!ksfu_readBytesFromFD(fd, mem, bytesToRead))
     {
-        goto failed;
+        goto done;
     }
 
-    close(fd);
-    *length = (size_t)st.st_size;
-    *data = mem;
-    return true;
+    bytesRead = bytesToRead;
+    mem[bytesRead] = '\0';
+    isSuccessful = true;
 
-failed:
-    close(fd);
-    if(mem != NULL)
+done:
+    if(fd >= 0)
+    {
+        close(fd);
+    }
+    if(!isSuccessful && mem != NULL)
     {
         free(mem);
+        mem = NULL;
     }
-    return false;
+
+    *data = mem;
+    if(length != NULL)
+    {
+        *length = bytesRead;
+    }
+
+    return isSuccessful;
 }
 
 bool ksfu_writeStringToFD(const int fd, const char* const string)
 {
     if(*string != 0)
     {
-        size_t bytesToWrite = strlen(string);
+        int bytesToWrite = (int)strlen(string);
         const char* pos = string;
         while(bytesToWrite > 0)
         {
-            ssize_t bytesWritten = write(fd, pos, bytesToWrite);
+            int bytesWritten = (int)write(fd, pos, (unsigned)bytesToWrite);
             if(bytesWritten == -1)
             {
                 KSLOG_ERROR("Could not write to fd %d: %s",
                             fd, strerror(errno));
                 return false;
             }
-            bytesToWrite -= (size_t)bytesWritten;
+            bytesToWrite -= bytesWritten;
             pos += bytesWritten;
         }
         return true;
@@ -190,16 +371,14 @@ bool ksfu_writeFmtArgsToFD(const int fd,
     return false;
 }
 
-ssize_t ksfu_readLineFromFD(const int fd,
-                            char* const buffer,
-                            const int maxLength)
+int ksfu_readLineFromFD(const int fd, char* const buffer, const int maxLength)
 {
     char* end = buffer + maxLength - 1;
     *end = 0;
     char* ch;
     for(ch = buffer; ch < end; ch++)
     {
-        ssize_t bytesRead = read(fd, ch, 1);
+        int bytesRead = (int)read(fd, ch, 1);
         if(bytesRead < 0)
         {
             KSLOG_ERROR("Could not read from fd %d: %s", fd, strerror(errno));
@@ -211,5 +390,246 @@ ssize_t ksfu_readLineFromFD(const int fd,
         }
     }
     *ch = 0;
-    return ch - buffer;
+    return (int)(ch - buffer);
 }
+
+bool ksfu_makePath(const char* absolutePath)
+{
+    bool isSuccessful = false;
+    char* pathCopy = strdup(absolutePath);
+    for(char* ptr = pathCopy+1; *ptr != '\0';ptr++)
+    {
+        if(*ptr == '/')
+        {
+            *ptr = '\0';
+            if(mkdir(pathCopy, S_IRWXU) < 0 && errno != EEXIST)
+            {
+                KSLOG_ERROR("Could not create directory %s: %s", pathCopy, strerror(errno));
+                goto done;
+            }
+            *ptr = '/';
+        }
+    }
+    if(mkdir(pathCopy, S_IRWXU) < 0 && errno != EEXIST)
+    {
+        KSLOG_ERROR("Could not create directory %s: %s", pathCopy, strerror(errno));
+        goto done;
+    }
+    isSuccessful = true;
+    
+done:
+    free(pathCopy);
+    return isSuccessful;
+}
+
+bool ksfu_removeFile(const char* path, bool mustExist)
+{
+    if(remove(path) < 0)
+    {
+        if(mustExist || errno != ENOENT)
+        {
+            KSLOG_ERROR("Could not delete %s: %s", path, strerror(errno));
+        }
+        return false;
+    }
+    return true;
+}
+
+bool ksfu_deleteContentsOfPath(const char* path)
+{
+    if(!canDeletePath(path))
+    {
+        return false;
+    }
+    
+    return deletePathContents(path, false);
+}
+
+bool ksfu_openBufferedWriter(KSBufferedWriter* writer, const char* const path, char* writeBuffer, int writeBufferLength)
+{
+    writer->buffer = writeBuffer;
+    writer->bufferLength = writeBufferLength;
+    writer->position = 0;
+    writer->fd = open(path, O_RDWR | O_CREAT | O_EXCL, 0644);
+    if(writer->fd < 0)
+    {
+        KSLOG_ERROR("Could not open crash report file %s: %s", path, strerror(errno));
+        return false;
+    }
+    return true;
+}
+
+void ksfu_closeBufferedWriter(KSBufferedWriter* writer)
+{
+    if(writer->fd > 0)
+    {
+        ksfu_flushBufferedWriter(writer);
+        close(writer->fd);
+        writer->fd = -1;
+    }
+}
+
+bool ksfu_writeBufferedWriter(KSBufferedWriter* writer, const char* restrict const data, const int length)
+{
+    if(length > writer->bufferLength - writer->position)
+    {
+        ksfu_flushBufferedWriter(writer);
+    }
+    if(length > writer->bufferLength)
+    {
+        return ksfu_writeBytesToFD(writer->fd, data, length);
+    }
+    memcpy(writer->buffer + writer->position, data, length);
+    writer->position += length;
+    return true;
+}
+
+bool ksfu_flushBufferedWriter(KSBufferedWriter* writer)
+{
+    if(writer->fd > 0 && writer->position > 0)
+    {
+        if(!ksfu_writeBytesToFD(writer->fd, writer->buffer, writer->position))
+        {
+            return false;
+        }
+        writer->position = 0;
+    }
+    return true;
+}
+
+static inline bool isReadBufferEmpty(KSBufferedReader* reader)
+{
+    return reader->dataEndPos == reader->dataStartPos;
+}
+
+static bool fillReadBuffer(KSBufferedReader* reader)
+{
+    if(reader->dataStartPos > 0)
+    {
+        memmove(reader->buffer, reader->buffer + reader->dataStartPos, reader->dataStartPos);
+        reader->dataEndPos -= reader->dataStartPos;
+        reader->dataStartPos = 0;
+        reader->buffer[reader->dataEndPos] = '\0';
+    }
+    int bytesToRead = reader->bufferLength - reader->dataEndPos;
+    if(bytesToRead <= 0)
+    {
+        return true;
+    }
+    int bytesRead = (int)read(reader->fd, reader->buffer + reader->dataEndPos, (size_t)bytesToRead);
+    if(bytesRead < 0)
+    {
+        KSLOG_ERROR("Could not read: %s", strerror(errno));
+        return false;
+    }
+    else
+    {
+        reader->dataEndPos += bytesRead;
+        reader->buffer[reader->dataEndPos] = '\0';
+    }
+    return true;
+}
+
+int ksfu_readBufferedReader(KSBufferedReader* reader, char* dstBuffer, int byteCount)
+{
+    int bytesRemaining = byteCount;
+    int bytesConsumed = 0;
+    char* pDst = dstBuffer;
+    while(bytesRemaining > 0)
+    {
+        int bytesInReader = reader->dataEndPos - reader->dataStartPos;
+        if(bytesInReader <= 0)
+        {
+            if(!fillReadBuffer(reader))
+            {
+                break;
+            }
+            bytesInReader = reader->dataEndPos - reader->dataStartPos;
+            if(bytesInReader <= 0)
+            {
+                break;
+            }
+        }
+        int bytesToCopy = bytesInReader <= bytesRemaining ? bytesInReader : bytesRemaining;
+        char* pSrc = reader->buffer + reader->dataStartPos;
+        memcpy(pDst, pSrc, bytesToCopy);
+        pDst += bytesToCopy;
+        reader->dataStartPos += bytesToCopy;
+        bytesConsumed += bytesToCopy;
+        bytesRemaining -= bytesToCopy;
+    }
+    
+    return bytesConsumed;
+}
+
+bool ksfu_readBufferedReaderUntilChar(KSBufferedReader* reader, int ch, char* dstBuffer, int* length)
+{
+    int bytesRemaining = *length;
+    int bytesConsumed = 0;
+    char* pDst = dstBuffer;
+    while(bytesRemaining > 0)
+    {
+        int bytesInReader = reader->dataEndPos - reader->dataStartPos;
+        int bytesToCopy = bytesInReader <= bytesRemaining ? bytesInReader : bytesRemaining;
+        char* pSrc = reader->buffer + reader->dataStartPos;
+        char* pChar = strchr(pSrc, ch);
+        bool isFound = pChar != NULL;
+        if(isFound)
+        {
+            int bytesToChar = (int)(pChar - pSrc) + 1;
+            if(bytesToChar < bytesToCopy)
+            {
+                bytesToCopy = bytesToChar;
+            }
+        }
+        memcpy(pDst, pSrc, bytesToCopy);
+        pDst += bytesToCopy;
+        reader->dataStartPos += bytesToCopy;
+        bytesConsumed += bytesToCopy;
+        bytesRemaining -= bytesToCopy;
+        if(isFound)
+        {
+            *length = bytesConsumed;
+            return true;
+        }
+        if(bytesRemaining > 0)
+        {
+            fillReadBuffer(reader);
+            if(isReadBufferEmpty(reader))
+            {
+                break;
+            }
+        }
+    }
+    
+    *length = bytesConsumed;
+    return false;
+}
+
+bool ksfu_openBufferedReader(KSBufferedReader* reader, const char* const path, char* readBuffer, int readBufferLength)
+{
+    readBuffer[0] = '\0';
+    readBuffer[readBufferLength - 1] = '\0';
+    reader->buffer = readBuffer;
+    reader->bufferLength = readBufferLength - 1;
+    reader->dataStartPos = 0;
+    reader->dataEndPos = 0;
+    reader->fd = open(path, O_RDONLY);
+    if(reader->fd < 0)
+    {
+        KSLOG_ERROR("Could not open file %s: %s", path, strerror(errno));
+        return false;
+    }
+    fillReadBuffer(reader);
+    return true;
+}
+
+void ksfu_closeBufferedReader(KSBufferedReader* reader)
+{
+    if(reader->fd > 0)
+    {
+        close(reader->fd);
+        reader->fd = -1;
+    }
+}
+

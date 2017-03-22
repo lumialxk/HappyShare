@@ -26,7 +26,6 @@
 
 
 #import "KSCrashReportFilterGZip.h"
-#import "KSCrashCallCompletion.h"
 #import "NSData+GZip.h"
 
 
@@ -65,7 +64,7 @@
                                                                error:&error];
         if(compressedData == nil)
         {
-            kscrash_i_callCompletion(onCompletion, filteredReports, NO, error);
+            kscrash_callCompletion(onCompletion, filteredReports, NO, error);
             return;
         }
         else
@@ -74,7 +73,7 @@
         }
     }
 
-    kscrash_i_callCompletion(onCompletion, filteredReports, YES, nil);
+    kscrash_callCompletion(onCompletion, filteredReports, YES, nil);
 }
 
 @end
@@ -97,7 +96,7 @@
         NSData* decompressedData = [report gunzippedWithError:&error];
         if(decompressedData == nil)
         {
-            kscrash_i_callCompletion(onCompletion, filteredReports, NO, error);
+            kscrash_callCompletion(onCompletion, filteredReports, NO, error);
             return;
         }
         else
@@ -106,7 +105,7 @@
         }
     }
 
-    kscrash_i_callCompletion(onCompletion, filteredReports, YES, nil);
+    kscrash_callCompletion(onCompletion, filteredReports, YES, nil);
 }
 
 @end

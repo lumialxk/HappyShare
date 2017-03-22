@@ -28,28 +28,26 @@
 #import "KSCrashReportFilterAppleFmt.h"
 
 
+#import <inttypes.h>
 #import <mach/machine.h>
 
-#import "KSCrashCallCompletion.h"
 #import "KSCrashReportFields.h"
 #import "KSJSONCodecObjC.h"
-#import "KSSafeCollections.h"
-#import "KSSystemInfo.h"
-#import "RFC3339DateTool.h"
+#import "KSCrashMonitor_System.h"
 
 
 #if defined(__LP64__)
-    #define FMT_PTR_SHORT        @"0x%lx"
-    #define FMT_PTR_LONG         @"0x%016lx"
-    #define FMT_PTR_RJ           @"%#18lx"
-    #define FMT_OFFSET           @"%lu"
+    #define FMT_LONG_DIGITS "16"
+    #define FMT_RJ_SPACES "18"
 #else
-    #define FMT_PTR_SHORT        @"0x%lx"
-    #define FMT_PTR_LONG         @"0x%08lx"
-    #define FMT_PTR_RJ           @"%#10lx"
-    #define FMT_OFFSET           @"%lu"
+    #define FMT_LONG_DIGITS "8"
+    #define FMT_RJ_SPACES "10"
 #endif
 
+#define FMT_PTR_SHORT        @"0x%" PRIxPTR
+#define FMT_PTR_LONG         @"0x%0" FMT_LONG_DIGITS PRIxPTR
+#define FMT_PTR_RJ           @"%#" FMT_RJ_SPACES PRIxPTR
+#define FMT_OFFSET           @"%" PRIuPTR
 #define FMT_TRACE_PREAMBLE       @"%-4d%-31s " FMT_PTR_LONG
 #define FMT_TRACE_UNSYMBOLICATED FMT_PTR_SHORT @" + " FMT_OFFSET
 #define FMT_TRACE_SYMBOLICATED   @"%@ + " FMT_OFFSET
@@ -66,8 +64,6 @@
 /** Convert a crash report to Apple format.
  *
  * @param JSONReport The crash report.
- *
- * @param reportStyle The style of report to generate.
  *
  * @return The converted crash report.
  */
@@ -109,13 +105,22 @@
 /** Date formatter for Apple date format in crash reports. */
 NSDateFormatter* g_dateFormatter;
 
+/** Date formatter for RFC3339 date format. */
+NSDateFormatter* g_rfc3339DateFormatter;
+
 /** Printing order for registers. */
 NSDictionary* g_registerOrders;
 
 + (void) initialize
 {
     g_dateFormatter = [[NSDateFormatter alloc] init];
+    [g_dateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
     [g_dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss.SSS ZZZ"];
+
+    g_rfc3339DateFormatter = [[NSDateFormatter alloc] init];
+    [g_rfc3339DateFormatter setLocale:[NSLocale localeWithLocaleIdentifier:@"en_US_POSIX"]];
+    [g_rfc3339DateFormatter setDateFormat:@"yyyy'-'MM'-'dd'T'HH':'mm':'ss'Z'"];
+    [g_rfc3339DateFormatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0]];
 
     NSArray* armOrder = [NSArray arrayWithObjects:
                          @"r0", @"r1", @"r2", @"r3", @"r4", @"r5", @"r6", @"r7",
@@ -195,11 +200,15 @@ NSDictionary* g_registerOrders;
     {
         if([self majorVersion:report] == kExpectedMajorVersion)
         {
-            [filteredReports addObjectIfNotNil:[self toAppleFormat:report]];
+            id appleReport = [self toAppleFormat:report];
+            if(appleReport != nil)
+            {
+                [filteredReports addObject:appleReport];
+            }
         }
     }
 
-    kscrash_i_callCompletion(onCompletion, filteredReports, YES, nil);
+    kscrash_callCompletion(onCompletion, filteredReports, YES, nil);
 }
 
 - (NSString*) CPUType:(NSString*) CPUArch
@@ -399,8 +408,8 @@ NSDictionary* g_registerOrders;
 - (NSString*) cpuArchForReport:(NSDictionary*) report
 {
     NSDictionary* system = [self systemReport:report];
-    cpu_type_t cpuType = [[system objectForKey:@KSSystemField_BinaryCPUType] intValue];
-    cpu_subtype_t cpuSubType = [[system objectForKey:@KSSystemField_BinaryCPUSubType] intValue];
+    cpu_type_t cpuType = [[system objectForKey:@KSCrashField_BinaryCPUType] intValue];
+    cpu_subtype_t cpuSubType = [[system objectForKey:@KSCrashField_BinaryCPUSubType] intValue];
     return [self CPUArchForMajor:cpuType minor:cpuSubType];
 }
 
@@ -409,7 +418,7 @@ NSDictionary* g_registerOrders;
     NSDictionary* system = [self systemReport:report];
     NSDictionary* reportInfo = [self infoReport:report];
     NSString *reportID = [reportInfo objectForKey:@KSCrashField_ID];
-    NSDate* crashTime = [RFC3339DateTool dateFromString:[reportInfo objectForKey:@KSCrashField_Timestamp]];
+    NSDate* crashTime = [g_rfc3339DateFormatter dateFromString:[reportInfo objectForKey:@KSCrashField_Timestamp]];
 
     return [self headerStringForSystemInfo:system reportID:reportID crashTime:crashTime];
 }
@@ -417,30 +426,30 @@ NSDictionary* g_registerOrders;
 - (NSString*)headerStringForSystemInfo:(NSDictionary*)system reportID:(NSString*)reportID crashTime:(NSDate*)crashTime
 {
     NSMutableString* str = [NSMutableString string];
-    NSString* executablePath = [system objectForKey:@KSSystemField_ExecutablePath];
-    NSString* cpuArch = [system objectForKey:@KSSystemField_CPUArch];
+    NSString* executablePath = [system objectForKey:@KSCrashField_ExecutablePath];
+    NSString* cpuArch = [system objectForKey:@KSCrashField_CPUArch];
     NSString* cpuArchType = [self CPUType:cpuArch];
 
     [str appendFormat:@"Incident Identifier: %@\n", reportID];
-    [str appendFormat:@"CrashReporter Key:   %@\n", [system objectForKey:@KSSystemField_DeviceAppHash]];
-    [str appendFormat:@"Hardware Model:      %@\n", [system objectForKey:@KSSystemField_Machine]];
+    [str appendFormat:@"CrashReporter Key:   %@\n", [system objectForKey:@KSCrashField_DeviceAppHash]];
+    [str appendFormat:@"Hardware Model:      %@\n", [system objectForKey:@KSCrashField_Machine]];
     [str appendFormat:@"Process:         %@ [%@]\n",
-     [system objectForKey:@KSSystemField_ProcessName],
-     [system objectForKey:@KSSystemField_ProcessID]];
+     [system objectForKey:@KSCrashField_ProcessName],
+     [system objectForKey:@KSCrashField_ProcessID]];
     [str appendFormat:@"Path:            %@\n", executablePath];
-    [str appendFormat:@"Identifier:      %@\n", [system objectForKey:@KSSystemField_BundleID]];
+    [str appendFormat:@"Identifier:      %@\n", [system objectForKey:@KSCrashField_BundleID]];
     [str appendFormat:@"Version:         %@ (%@)\n",
-     [system objectForKey:@KSSystemField_BundleShortVersion],
-     [system objectForKey:@KSSystemField_BundleVersion]];
+     [system objectForKey:@KSCrashField_BundleShortVersion],
+     [system objectForKey:@KSCrashField_BundleVersion]];
     [str appendFormat:@"Code Type:       %@\n", cpuArchType];
     [str appendFormat:@"Parent Process:  ? [%@]\n",
-     [system objectForKey:@KSSystemField_ParentProcessID]];
+     [system objectForKey:@KSCrashField_ParentProcessID]];
     [str appendFormat:@"\n"];
     [str appendFormat:@"Date/Time:       %@\n", [self stringFromDate:crashTime]];
     [str appendFormat:@"OS Version:      %@ %@ (%@)\n",
-     [system objectForKey:@KSSystemField_SystemName],
-     [system objectForKey:@KSSystemField_SystemVersion],
-     [system objectForKey:@KSSystemField_OSVersion]];
+     [system objectForKey:@KSCrashField_SystemName],
+     [system objectForKey:@KSCrashField_SystemVersion],
+     [system objectForKey:@KSCrashField_OSVersion]];
     [str appendFormat:@"Report Version:  104\n"];
 
     return str;
@@ -452,7 +461,7 @@ NSDictionary* g_registerOrders;
 
     NSArray* binaryImages = [self binaryImagesReport:report];
     NSDictionary* system = [self systemReport:report];
-    NSString* executablePath = [system objectForKey:@KSSystemField_ExecutablePath];
+    NSString* executablePath = [system objectForKey:@KSCrashField_ExecutablePath];
 
     [str appendString:@"\nBinary Images:\n"];
     if(binaryImages)
@@ -847,7 +856,7 @@ NSDictionary* g_registerOrders;
     NSMutableString* str = [NSMutableString string];
 
     NSDictionary* system = [self systemReport:report];
-    NSString* executablePath = [system objectForKey:@KSSystemField_ExecutablePath];
+    NSString* executablePath = [system objectForKey:@KSCrashField_ExecutablePath];
     NSString* executableName = [executablePath lastPathComponent];
     NSDictionary* crash = [self crashReport:recrashReport];
     NSDictionary* thread = [crash objectForKey:@KSCrashField_CrashedThread];

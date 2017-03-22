@@ -1,7 +1,7 @@
 KSCrash
 =======
 
-#### The Ultimate iOS Crash Reporter
+#### The Ultimate Crash Reporter
 
 
 ### Another crash reporter? Why?
@@ -13,6 +13,7 @@ of a lot more that they COULD do. Here are some key features of KSCrash:
   (necessary for iOS versions where many functions have been redacted).
 * Generates full Apple reports, with every field filled in.
 * 32-bit and 64-bit mode.
+* Supports all Apple devices, including Apple Watch.
 * Handles errors that can only be caught at the mach level, such as stack
   overflow.
 * Tracks the REAL cause of an uncaught C++ exception.
@@ -53,6 +54,11 @@ of a lot more that they COULD do. Here are some key features of KSCrash:
 
 
 ### What's New?
+
+#### VERY VERY VERY preliminary Android support.
+
+And I do mean PRELIMINARY. Most stuff doesn't work, but it does compile.
+Look in the Android subdir if you want to play around with it.
 
 #### C++ Exception Handling
 
@@ -95,18 +101,6 @@ Now with KSCrash, you get the uncaught exception type, description, and where it
     10  CoreFoundation                  0x01f2bf44 0x1efa000 + 204612 (CFRunLoopRunSpecific + 276)
     ...
 
-#### Handy C++ development helper
-
-If you turn on trace printing:
-
-```objective-c
-[KSCrash sharedInstance].printTraceToStdout = YES;
-```
-
-It will print a proper stack trace to stdout whenever your app throws an
-uncaught C++ exception! Otherwise the debugger will only lead you to where the
-exception was rethrown.
-
 #### Custom Crashes & Stack Traces
 
 You can now report your own custom crashes and stack traces (think scripting
@@ -127,18 +121,6 @@ See KSCrash.h for details.
 The following features should be considered "unstable" and are disabled by default:
 
 - Deadlock detection
-
-
-### Incompatible API Change Notice
-
-As of Jan 29th, 2013, I've modified the KSCrash main API to use properties
-rather than init method parameters for configuration. With all the new options,
-things were starting to get a bit unwieldly. This should mark the last major
-API change.
-
-Note: The preferred method for initializing KSCrash is now via the installation
-      objects rather than using filters directly. See "How to Use KSCrash" for
-      details.
 
 
 
@@ -222,7 +204,7 @@ installation.url = [NSURL URLWithString:@"https://put.your.url.here/api/v1/crash
 }
 ```
 
-This will install the crash sentry system (which intercepts crashes and stores
+This will install the crash monitor system (which intercepts crashes and stores
 reports to disk). Note that there are other properties you can and probably
 will want to set for the various installations.
 
@@ -243,7 +225,6 @@ If possible, you should read the following header files to fully understand
 what features KSCrash has, and how to use them:
 
 * KSCrash.h
-* KSCrashAdvanced.h
 * KSCrashInstallation.h
 * KSCrashInstallation(SPECIFIC TYPE).h
 * Architecture.md
@@ -274,7 +255,7 @@ You can store custom user data to the next crash report by setting the
 **userInfo** property in KSCrash.h.
 
 
-#### Zombie Tracking (zombieCacheSize in KSCrash.h)
+#### Zombie Tracking (KSCrashMonitorTypeZombie in KSCrashMonitorType.h)
 
 KSCrash has the ability to detect zombie instances (dangling pointers to
 deallocated objects). It does this by recording the address and class of any
@@ -288,16 +269,11 @@ print its contents. Certain kinds of memory corruption or stack corruption
 crashes can cause the exception to deallocate early, further twarting efforts
 to debug your app, so this feature can be quite handy at times.
 
-Each cache entry takes up 8 bytes on a 32-bit architecture, and 16 bytes on a
-64-bit architecture. The recommended minimum is 16384, which translates to
-128k of RAM used for zombie tracking on a 32-bit machine. Generally, the more
-objects you tend to have in your app, the larger you'll want to make the cache.
-
 Trade off: Zombie tracking at the cost of adding very slight overhead to object
            deallocation, and having some memory reserved.
 
 
-#### Deadlock Detection (deadlockWatchdogInterval in KSCrash.h)
+#### Deadlock Detection (KSCrashMonitorTypeMainThreadDeadlock in KSCrashMonitorType.h)
 
 **WARNING WARNING WARNING WARNING WARNING WARNING WARNING**
 
@@ -349,7 +325,7 @@ Trade off: Custom crash handling code, but you must be careful what you put
            in it!
 
 
-#### KSCrash log redirection (KSCrashAdvanced.h)
+#### KSCrash log redirection
 
 This takes whatever KSCrash would have printed to the console, and writes it
 to a file instead. I mostly use this for debugging KSCrash itself, but it could

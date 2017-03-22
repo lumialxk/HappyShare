@@ -9,8 +9,8 @@
 import UIKit
 
 enum ConfiguretionType {
-    case Album
-    case Tag
+    case album
+    case tag
 }
 
 class ConfiguretionViewController: UIViewController {
@@ -31,11 +31,11 @@ class ConfiguretionViewController: UIViewController {
     }
     
     private func configureSubviews() {
-        if type == .Album {
+        if type == .album {
             navigationItem.title = "请选择合辑"
             navigationItem.rightBarButtonItem = nil
         }
-        if type == .Tag {
+        if type == .tag {
             navigationItem.title = "请选择标签"
         }
     }
@@ -60,14 +60,14 @@ extension ConfiguretionViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return type == ConfiguretionType.Album ? albums?.count ?? 0 : tags?.count ?? 0
+        return type == ConfiguretionType.album ? albums?.count ?? 0 : tags?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) ?? UITableViewCell(style: .default, reuseIdentifier: cellIdentifier)
-        cell.textLabel?.text = type == ConfiguretionType.Album ? albums?[indexPath.row].name : tags?[indexPath.row].name
+        cell.textLabel?.text = type == ConfiguretionType.album ? albums?[indexPath.row].name : tags?[indexPath.row].name
         cell.textLabel?.textColor = UIColor.darkGray
-        if type == ConfiguretionType.Tag {
+        if type == ConfiguretionType.tag {
             if let tag = tags?[indexPath.row] {
                 cell.accessoryType = selectedTags.contains(tag) ? .checkmark : .none
             }
@@ -80,7 +80,7 @@ extension ConfiguretionViewController: UITableViewDataSource {
 
 extension ConfiguretionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if type == ConfiguretionType.Album {
+        if type == ConfiguretionType.album {
             didSelectAlbum?(albums?[indexPath.row])
             navigationController?.popViewController(animated: true)
         } else {

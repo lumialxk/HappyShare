@@ -10,6 +10,6 @@ import Foundation
 import CoreData
 
 
-public class Tag: NSManagedObject {
+class Tag: NSManagedObject {
 
 }

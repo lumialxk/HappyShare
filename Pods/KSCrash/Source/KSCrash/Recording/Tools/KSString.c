@@ -28,6 +28,7 @@
 #include "KSString.h"
 #include <string.h>
 #include <stdlib.h>
+#include "KSSystemCapabilities.h"
 
 
 // Compiler hints for "if" statements
@@ -127,9 +128,7 @@ static const unsigned int g_hexConversion[] =
     INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV, INV,
 };
 
-bool ksstring_extractHexValue(const char* string,
-                              size_t stringLength,
-                              uint64_t* const result)
+bool ksstring_extractHexValue(const char* string, int stringLength, uint64_t* const result)
 {
     if(stringLength > 0)
     {
@@ -137,7 +136,15 @@ bool ksstring_extractHexValue(const char* string,
         const unsigned char* const end = current + stringLength;
         for(;;)
         {
-            current = (const unsigned char*)strnstr((const char*)current, "0x", (size_t)(end - current));
+#if KSCRASH_HAS_STRNSTR
+            current = (const unsigned char*)strnstr((const char*)current, "0x", (unsigned)(end - current));
+#else
+            current = (const unsigned char*)strstr((const char*)current, "0x");
+            unlikely_if(current >= end)
+            {
+                return false;
+            }
+#endif
             unlikely_if(!current)
             {
                 return false;
@@ -167,20 +174,4 @@ bool ksstring_extractHexValue(const char* string,
         }
     }
     return false;
-}
-
-void ksstring_replace(const char** dest, const char* replacement)
-{
-    if(*dest != NULL)
-    {
-        free((void*)*dest);
-    }
-    if(replacement == NULL)
-    {
-        *dest = NULL;
-    }
-    else
-    {
-        *dest = strdup(replacement);
-    }
 }

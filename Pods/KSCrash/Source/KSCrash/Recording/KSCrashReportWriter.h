@@ -39,7 +39,7 @@ extern "C" {
 
 
 #include <stdbool.h>
-#include <sys/types.h>
+#include <stdint.h>
 
 
 /**
@@ -81,7 +81,7 @@ typedef struct KSCrashReportWriter
      */
     void (*addIntegerElement)(const struct KSCrashReportWriter* writer,
                               const char* name,
-                              long long value);
+                              int64_t value);
 
     /** Add an unsigned integer element to the report.
      *
@@ -93,7 +93,7 @@ typedef struct KSCrashReportWriter
      */
     void (*addUIntegerElement)(const struct KSCrashReportWriter* writer,
                                const char* name,
-                               unsigned long long value);
+                               uint64_t value);
 
     /** Add a string element to the report.
      *
@@ -119,7 +119,7 @@ typedef struct KSCrashReportWriter
                                const char* name,
                                const char* filePath);
 
-    /** Add a JSON element from a text file to the report.
+    /** Add an array of string elements representing lines from a text file to the report.
      *
      * @param writer This writer.
      *
@@ -127,9 +127,24 @@ typedef struct KSCrashReportWriter
      *
      * @param filePath The path to the file containing the value to add.
      */
+    void (*addTextFileLinesElement)(const struct KSCrashReportWriter* writer,
+                                    const char* name,
+                                    const char* filePath);
+
+    /** Add a JSON element from a text file to the report.
+     *
+     * @param writer This writer.
+     *
+     * @param name The name to give this element.
+     *
+     * @param filePath The path to the file containing the value to add.
+     *
+     * @param closeLastContainer If false, do not close the last container.
+     */
     void (*addJSONFileElement)(const struct KSCrashReportWriter* writer,
                                const char* name,
-                               const char* filePath);
+                               const char* filePath,
+                               const bool closeLastContainer);
     
     /** Add a hex encoded data element to the report.
      *
@@ -144,7 +159,7 @@ typedef struct KSCrashReportWriter
     void (*addDataElement)(const struct KSCrashReportWriter* writer,
                            const char* name,
                            const char* value,
-                           const size_t length);
+                           const int length);
 
     /** Begin writing a hex encoded data element to the report.
      *
@@ -165,7 +180,7 @@ typedef struct KSCrashReportWriter
      */
     void (*appendDataElement)(const struct KSCrashReportWriter* writer,
                               const char* value,
-                              const size_t length);
+                              const int length);
 
     /** Complete writing a hex encoded data element to the report.
      *
@@ -195,7 +210,8 @@ typedef struct KSCrashReportWriter
      */
     void (*addJSONElement)(const struct KSCrashReportWriter* writer,
                            const char* name,
-                           const char* jsonElement);
+                           const char* jsonElement,
+                           bool closeLastContainer);
 
     /** Begin a new object container.
      *

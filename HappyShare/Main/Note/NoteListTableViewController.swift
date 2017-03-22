@@ -11,14 +11,14 @@ import UIKit
 
 // MARK: - NoteListType
 enum NoteListType {
-    case Tag
-    case Album
-    case `Type`
+    case tag
+    case album
+    case `type`
 }
 
 class NoteListTableViewController: UITableViewController {
     
-    var type = NoteListType.Tag
+    var type = NoteListType.tag
     var tag: Tag?
     var album: Album?
     var noteType: NoteType?
@@ -45,9 +45,9 @@ class NoteListTableViewController: UITableViewController {
 
     private func configureSubviews() {
         switch type {
-        case .Tag: notes = HSCoreDataManager.sharedManager.notesWithTag(tag: tag)
-        case .Album: notes = HSCoreDataManager.sharedManager.notesInAlbum(album: album)
-        case .Type: notes = HSCoreDataManager.sharedManager.notesWithType(type: noteType)
+        case .tag: notes = HSCoreDataManager.sharedManager.notesWithTag(tag: tag)
+        case .album: notes = HSCoreDataManager.sharedManager.notesInAlbum(album: album)
+        case .type: notes = HSCoreDataManager.sharedManager.notesWithType(type: noteType)
         }
         tableView.reloadData()
     }

@@ -16,12 +16,12 @@
 		EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA79687D1DC9D3FD00ACDEBC /* Info.plist */; };
 		EA7968891DC9D47100ACDEBC /* LXKCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */; };
 		EA79688A1DC9D47100ACDEBC /* HSCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */; };
-		EADABDA01E81050500F7EE7E /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */; };
-		EADABDA11E81050500F7EE7E /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */; };
-		EADABDA21E81050500F7EE7E /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */; };
-		EADABDA31E81050500F7EE7E /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */; };
-		EADABDA41E81050500F7EE7E /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */; };
-		EADABDA51E81050500F7EE7E /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */; };
+		EA7B4C361E81111C0064B4B5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */; };
+		EA7B4C371E81111C0064B4B5 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */; };
+		EA7B4C381E81111C0064B4B5 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */; };
+		EA7B4C391E81111C0064B4B5 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */; };
+		EA7B4C3A1E81111C0064B4B5 /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */; };
+		EA7B4C3B1E81111C0064B4B5 /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */; };
 		EAE0EE6E1D0E5051003404B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */; };
 		EAE0EE7C1D0E5051003404B2 /* HappyShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE7B1D0E5051003404B2 /* HappyShareTests.swift */; };
 		EAE0EE871D0E5051003404B2 /* HappyShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE861D0E5051003404B2 /* HappyShareUITests.swift */; };
@@ -111,13 +111,13 @@
 		EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfiguretionTableViewController.swift; sourceTree = "<group>"; };
 		EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MainInterface.storyboard; sourceTree = "<group>"; };
 		EA79687D1DC9D3FD00ACDEBC /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataClass.swift"; sourceTree = "<group>"; };
+		EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EAB865191DC892B100AB7B87 /* HappyShare.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HappyShare.entitlements; sourceTree = "<group>"; };
-		EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Tag+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataClass.swift"; sourceTree = "<group>"; };
-		EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Album+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		EAE0EE631D0E5051003404B2 /* HappyShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HappyShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EAE0EE721D0E5051003404B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -337,12 +337,12 @@
 		EAE0EE981D0E5241003404B2 /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				EADABD9A1E81050500F7EE7E /* Note+CoreDataClass.swift */,
-				EADABD9B1E81050500F7EE7E /* Note+CoreDataProperties.swift */,
-				EADABD9C1E81050500F7EE7E /* Tag+CoreDataClass.swift */,
-				EADABD9D1E81050500F7EE7E /* Tag+CoreDataProperties.swift */,
-				EADABD9E1E81050500F7EE7E /* Album+CoreDataClass.swift */,
-				EADABD9F1E81050500F7EE7E /* Album+CoreDataProperties.swift */,
+				EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */,
+				EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */,
+				EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */,
+				EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */,
+				EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */,
+				EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */,
 				EAE0EE9F1D0E56FC003404B2 /* HappyShare.xcdatamodel */,
 				EAE0EEA11D0E56FC003404B2 /* project副本.plist */,
 				EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */,
@@ -437,12 +437,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EAE0EE8B1D0E5051003404B2 /* Build configuration list for PBXNativeTarget "HappyShare" */;
 			buildPhases = (
-				C009487A00FA18ADE2837CE2 /* 📦 Check Pods Manifest.lock */,
+				C009487A00FA18ADE2837CE2 /* [CP] Check Pods Manifest.lock */,
 				EAE0EE5F1D0E5051003404B2 /* Sources */,
 				EAE0EE601D0E5051003404B2 /* Frameworks */,
 				EAE0EE611D0E5051003404B2 /* Resources */,
-				6991CD376659716C7DD070A0 /* 📦 Embed Pods Frameworks */,
-				797CB3AD5CE083A07A214BEC /* 📦 Copy Pods Resources */,
+				6991CD376659716C7DD070A0 /* [CP] Embed Pods Frameworks */,
+				797CB3AD5CE083A07A214BEC /* [CP] Copy Pods Resources */,
 				EA7968761DC9D3D300ACDEBC /* Embed App Extensions */,
 			);
 			buildRules = (
@@ -599,14 +599,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		6991CD376659716C7DD070A0 /* 📦 Embed Pods Frameworks */ = {
+		6991CD376659716C7DD070A0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -614,14 +614,14 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		797CB3AD5CE083A07A214BEC /* 📦 Copy Pods Resources */ = {
+		797CB3AD5CE083A07A214BEC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -629,19 +629,19 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HappyShare/Pods-HappyShare-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C009487A00FA18ADE2837CE2 /* 📦 Check Pods Manifest.lock */ = {
+		C009487A00FA18ADE2837CE2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "📦 Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -681,8 +681,8 @@
 				EAE0EEE71D0E5785003404B2 /* URLDetailViewController.swift in Sources */,
 				EAE0EECC1D0E5754003404B2 /* LXKGridViewCell.m in Sources */,
 				EAE0EEE41D0E5785003404B2 /* NoteDetailViewController.swift in Sources */,
-				EADABDA21E81050500F7EE7E /* Tag+CoreDataClass.swift in Sources */,
-				EADABDA11E81050500F7EE7E /* Note+CoreDataProperties.swift in Sources */,
+				EA7B4C381E81111C0064B4B5 /* Tag+CoreDataClass.swift in Sources */,
+				EA7B4C371E81111C0064B4B5 /* Note+CoreDataProperties.swift in Sources */,
 				EAE0EEDE1D0E5785003404B2 /* NoteViewController.swift in Sources */,
 				EAE0EEE11D0E5785003404B2 /* WritePhotoNoteViewController.swift in Sources */,
 				EAE0EEC21D0E5734003404B2 /* Global.swift in Sources */,
@@ -690,13 +690,13 @@
 				EAE0EEEF1D0E579C003404B2 /* AlbumCollectionViewController.swift in Sources */,
 				EAE0EEE21D0E5785003404B2 /* WriteURLNoteViewController.swift in Sources */,
 				EAE0EECD1D0E5754003404B2 /* NSIndexSet+Convenience.m in Sources */,
-				EADABDA41E81050500F7EE7E /* Album+CoreDataClass.swift in Sources */,
+				EA7B4C3A1E81111C0064B4B5 /* Album+CoreDataClass.swift in Sources */,
 				EAE0EEE51D0E5785003404B2 /* WordsDetailViewController.swift in Sources */,
 				EAE0EEE01D0E5785003404B2 /* WriteWordsNoteViewController.swift in Sources */,
-				EADABDA31E81050500F7EE7E /* Tag+CoreDataProperties.swift in Sources */,
-				EADABDA01E81050500F7EE7E /* Note+CoreDataClass.swift in Sources */,
+				EA7B4C391E81111C0064B4B5 /* Tag+CoreDataProperties.swift in Sources */,
+				EA7B4C361E81111C0064B4B5 /* Note+CoreDataClass.swift in Sources */,
 				EAE0EEEC1D0E5791003404B2 /* TagViewController.swift in Sources */,
-				EADABDA51E81050500F7EE7E /* Album+CoreDataProperties.swift in Sources */,
+				EA7B4C3B1E81111C0064B4B5 /* Album+CoreDataProperties.swift in Sources */,
 				EAE0EEC11D0E5734003404B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

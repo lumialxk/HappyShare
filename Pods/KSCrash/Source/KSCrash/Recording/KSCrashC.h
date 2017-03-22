@@ -37,7 +37,8 @@ extern "C" {
 #endif
 
 
-#include "KSCrashContext.h"
+#include "KSCrashMonitorType.h"
+#include "KSCrashReportWriter.h"
 
 #include <stdbool.h>
 
@@ -45,51 +46,24 @@ extern "C" {
 /** Install the crash reporter. The reporter will record the next crash and then
  * terminate the program.
  *
- * @param crashReportFilePath The file to store the next crash report to.
- *
- * @param recrashReportFilePath If the system crashes during crash handling,
- *                              store a second, minimal report here.
- *
- * @param stateFilePath File to store persistent state in.
- *
- * @param crashID The unique identifier to assign to the next crash report.
+ * @param installPath Directory to install to.
  *
  * @return The crash types that are being handled.
  */
-KSCrashType kscrash_install(const char* const crashReportFilePath,
-                            const char* const recrashReportFilePath,
-                            const char* stateFilePath,
-                            const char* crashID);
+KSCrashMonitorType kscrash_install(const char* appName, const char* const installPath);
 
 /** Set the crash types that will be handled.
  * Some crash types may not be enabled depending on circumstances (e.g. running
  * in a debugger).
  *
- * @param crashTypes The crash types to handle.
+ * @param monitors The monitors to install.
  *
- * @return The crash types that are now behing handled. If KSCrash has been
- *         installed, the return value represents the crash sentries that were
- *         successfully installed. Otherwise it represents which sentries it
+ * @return The monitors that were installed. If KSCrash has been
+ *         installed, the return value represents the monitors that were
+ *         successfully installed. Otherwise it represents which monitors it
  *         will attempt to activate when KSCrash installs.
  */
-KSCrashType kscrash_setHandlingCrashTypes(KSCrashType crashTypes);
-
-/** Reinstall the crash reporter. Useful for resetting the crash reporter
- * after a "soft" crash.
- *
- * @param crashReportFilePath The file to store the next crash report to.
- *
- * @param recrashReportFilePath If the system crashes during crash handling,
- *                              store a second, minimal report here.
- *
- * @param stateFilePath File to store persistent state in.
- *
- * @param crashID The unique identifier to assign to the next crash report.
- */
-void kscrash_reinstall(const char* const crashReportFilePath,
-                       const char* const recrashReportFilePath,
-                       const char* const stateFilePath,
-                       const char* const crashID);
+KSCrashMonitorType kscrash_setMonitoring(KSCrashMonitorType monitors);
 
 /** Set the user-supplied data in JSON format.
  *
@@ -97,21 +71,6 @@ void kscrash_reinstall(const char* const crashReportFilePath,
  *                     NULL = delete.
  */
 void kscrash_setUserInfoJSON(const char* const userInfoJSON);
-
-/** Set the size of the cache to use for on-device zombie tracking.
- * Every deallocated object will be hashed based on its address modulus the cache
- * size, so the bigger the cache, the less likely a hash collision (missed zombie).
- * It is best to profile your app to determine how many objects are allocated at
- * a time before choosing this value, but in general you'll want a value of
- * at least 16384.
- * Each cache entry will occupy 8 bytes for 32-bit architectures and 16 bytes
- * for 64-bit architectures.
- *
- * Note: Value must be a power-of-2. 0 = no zombie checking.
- *
- * Default: 0
- */
-void kscrash_setZombieCacheSize(size_t zombieCacheSize);
 
 /** Set the maximum time to allow the main thread to run without returning.
  * If a task occupies the main thread for longer than this interval, the
@@ -130,25 +89,7 @@ void kscrash_setZombieCacheSize(size_t zombieCacheSize);
  */
 void kscrash_setDeadlockWatchdogInterval(double deadlockWatchdogInterval);
 
-/** Set whether or not to print a stack trace to stdout when a crash occurs.
- *
- * Default: false
- */
-void kscrash_setPrintTraceToStdout(bool printTraceToStdout);
-
-/** If true, search for thread names where appropriate.
- * Thread name searching is not async-safe, and so comes with the risk of
- * timing out and panicking in thread_lock().
- */
-void kscrash_setSearchThreadNames(bool shouldSearchThreadNames);
-
-/** If true, search for dispatch queue names where appropriate.
-* Queue name searching is not async-safe, and so comes with the risk of
-* timing out and panicking in thread_lock().
-*/
-void kscrash_setSearchQueueNames(bool shouldSearchQueueNames);
-
-/** If YES, introspect memory contents during a crash.
+/** If true, introspect memory contents during a crash.
  * Any Objective-C objects or C strings near the stack pointer or referenced by
  * cpu registers or exceptions will be recorded in the crash report, along with
  * their contents.
@@ -163,7 +104,7 @@ void kscrash_setIntrospectMemory(bool introspectMemory);
  *
  * Default: NULL
  */
-void kscrash_setDoNotIntrospectClasses(const char** doNotIntrospectClasses, size_t length);
+void kscrash_setDoNotIntrospectClasses(const char** doNotIntrospectClasses, int length);
 
 /** Set the callback to invoke upon a crash.
  *
@@ -177,6 +118,23 @@ void kscrash_setDoNotIntrospectClasses(const char** doNotIntrospectClasses, size
  * Default: NULL
  */
 void kscrash_setCrashNotifyCallback(const KSReportWriteCallback onCrashNotify);
+
+/** Set if KSLOG console messages should be appended to the report.
+ *
+ * @param shouldAddConsoleLogToReport If true, add the log to the report.
+ */
+void kscrash_setAddConsoleLogToReport(bool shouldAddConsoleLogToReport);
+
+/** Set if KSCrash should print the previous log to the console on startup.
+ *  This is for debugging purposes.
+ */
+void kscrash_setPrintPreviousLog(bool shouldPrintPreviousLog);
+
+/** Set the maximum number of reports allowed on disk before old ones get deleted.
+ *
+ * @param maxReportCount The maximum number of reports.
+ */
+void kscrash_setMaxReportCount(int maxReportCount);
 
 /** Report a custom, user defined exception.
  * This can be useful when dealing with scripting languages.
@@ -192,9 +150,11 @@ void kscrash_setCrashNotifyCallback(const KSReportWriteCallback onCrashNotify);
  *
  * @param lineOfCode A copy of the offending line of code (NULL = ignore).
  *
- * @param stackTrace An array of strings representing the call stack leading to the exception.
+ * @param stackTrace JSON encoded array containing stack trace information (one frame per array entry).
+ *                   The frame structure can be anything you want, including bare strings.
  *
- * @param stackTraceCount The length of the stack trace array (0 = ignore).
+ * @param logAllThreads If true, suspend all threads and log their state. Note that this incurs a
+ *                      performance penalty, so it's best to use only on fatal errors.
  *
  * @param terminateProgram If true, do not return from this function call. Terminate the program instead.
  */
@@ -202,9 +162,72 @@ void kscrash_reportUserException(const char* name,
                                  const char* reason,
                                  const char* language,
                                  const char* lineOfCode,
-                                 const char** stackTrace,
-                                 size_t stackTraceCount,
+                                 const char* stackTrace,
+                                 bool logAllThreads,
                                  bool terminateProgram);
+
+    
+#pragma mark -- Notifications --
+
+/** Notify the crash reporter of the application active state.
+ *
+ * @param isActive true if the application is active, otherwise false.
+ */
+void kscrash_notifyAppActive(bool isActive);
+
+/** Notify the crash reporter of the application foreground/background state.
+ *
+ * @param isInForeground true if the application is in the foreground, false if
+ *                 it is in the background.
+ */
+void kscrash_notifyAppInForeground(bool isInForeground);
+
+/** Notify the crash reporter that the application is terminating.
+ */
+void kscrash_notifyAppTerminate(void);
+
+/** Notify the crash reporter that the application has crashed.
+ */
+void kscrash_notifyAppCrash(void);
+
+    
+#pragma mark -- Reporting --
+
+/** Get the number of reports on disk.
+ */
+int kscrash_getReportCount();
+
+/** Get a list of IDs for all reports on disk.
+ *
+ * @param reportIDs An array big enough to hold all report IDs.
+ * @param count How many reports the array can hold.
+ *
+ * @return The number of report IDs that were placed in the array.
+ */
+int kscrash_getReportIDs(int64_t* reportIDs, int count);
+
+/** Read a report.
+ *
+ * @param reportID The report's ID.
+ *
+ * @return The NULL terminated report, or NULL if not found.
+ *         MEMORY MANAGEMENT WARNING: User is responsible for calling free() on the returned value.
+ */
+char* kscrash_readReport(int64_t reportID);
+
+/** Add a custom report to the store.
+ *
+ * @param report The report's contents (must be JSON encoded).
+ * @param reportLength The length of the report in bytes.
+ *
+ * @return the new report's ID.
+ */
+int64_t kscrash_addUserReport(const char* report, int reportLength);
+
+/** Delete all reports on disk.
+ */
+void kscrash_deleteAllReports();
+
 
 #ifdef __cplusplus
 }

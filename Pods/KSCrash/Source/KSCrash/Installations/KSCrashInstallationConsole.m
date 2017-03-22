@@ -27,15 +27,24 @@
 #import "KSCrashInstallation+Private.h"
 #import "KSCrashReportSinkConsole.h"
 #import "KSCrashReportFilterAppleFmt.h"
+#import "KSCrashReportFilterBasic.h"
 #import "KSCrashReportFilterJSON.h"
 #import "KSCrashReportFilterStringify.h"
-#import "KSSingleton.h"
 
 @implementation KSCrashInstallationConsole
 
-IMPLEMENT_EXCLUSIVE_SHARED_INSTANCE(KSCrashInstallationConsole)
-
 @synthesize printAppleFormat = _printAppleFormat;
+
++ (instancetype) sharedInstance
+{
+    static KSCrashInstallationConsole *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[KSCrashInstallationConsole alloc] init];
+    });
+    return sharedInstance;
+}
 
 - (id) init
 {

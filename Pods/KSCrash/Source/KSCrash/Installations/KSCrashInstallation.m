@@ -27,7 +27,8 @@
 
 #import "KSCrashInstallation.h"
 #import "KSCrashInstallation+Private.h"
-#import "KSCrashAdvanced.h"
+#import "KSCrashReportFilterBasic.h"
+#import "KSCrash.h"
 #import "KSCString.h"
 #import "KSJSONCodecObjC.h"
 #import "KSLogger.h"
@@ -48,7 +49,7 @@ typedef struct
 typedef struct
 {
     KSReportWriteCallback userCrashCallback;
-    size_t reportFieldsCount;
+    int reportFieldsCount;
     ReportField* reportFields[0];
 } CrashHandlerData;
 
@@ -56,14 +57,14 @@ typedef struct
 static CrashHandlerData* g_crashHandlerData;
 
 
-void kscinst_i_crashCallback(const KSCrashReportWriter* writer)
+static void crashCallback(const KSCrashReportWriter* writer)
 {
-    for(size_t i = 0; i < g_crashHandlerData->reportFieldsCount; i++)
+    for(int i = 0; i < g_crashHandlerData->reportFieldsCount; i++)
     {
         ReportField* field = g_crashHandlerData->reportFields[i];
         if(field->key != NULL && field->value != NULL)
         {
-            writer->addJSONElement(writer, field->key, field->value);
+            writer->addJSONElement(writer, field->key, field->value, true);
         }
     }
     if(g_crashHandlerData->userCrashCallback != NULL)
@@ -75,7 +76,7 @@ void kscinst_i_crashCallback(const KSCrashReportWriter* writer)
 
 @interface KSCrashInstReportField: NSObject
 
-@property(nonatomic,readonly,assign) size_t index;
+@property(nonatomic,readonly,assign) int index;
 @property(nonatomic,readonly,assign) ReportField* field;
 
 @property(nonatomic,readwrite,retain) NSString* key;
@@ -96,12 +97,12 @@ void kscinst_i_crashCallback(const KSCrashReportWriter* writer)
 @synthesize keyBacking = _keyBacking;
 @synthesize valueBacking= _valueBacking;
 
-+ (KSCrashInstReportField*) fieldWithIndex:(size_t) index
++ (KSCrashInstReportField*) fieldWithIndex:(int) index
 {
     return [(KSCrashInstReportField*)[self alloc] initWithIndex:index];
 }
 
-- (id) initWithIndex:(size_t) index
+- (id) initWithIndex:(int) index
 {
     if((self = [super init]))
     {
@@ -157,7 +158,7 @@ void kscinst_i_crashCallback(const KSCrashReportWriter* writer)
 
 @interface KSCrashInstallation ()
 
-@property(nonatomic,readwrite,assign) size_t nextFieldIndex;
+@property(nonatomic,readwrite,assign) int nextFieldIndex;
 @property(nonatomic,readonly,assign) CrashHandlerData* crashHandlerData;
 @property(nonatomic,readwrite,retain) NSMutableData* crashHandlerDataBacking;
 @property(nonatomic,readwrite,retain) NSMutableDictionary* fields;
@@ -321,7 +322,7 @@ void kscinst_i_crashCallback(const KSCrashReportWriter* writer)
     @synchronized(handler)
     {
         g_crashHandlerData = self.crashHandlerData;
-        handler.onCrash = kscinst_i_crashCallback;
+        handler.onCrash = crashCallback;
         [handler install];
     }
 }

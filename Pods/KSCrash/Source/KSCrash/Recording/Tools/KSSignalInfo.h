@@ -37,7 +37,7 @@ extern "C" {
 #endif
 
 
-#include <mach/mach.h>
+#include <stdint.h>
 
 
 /** Get the name of a signal.
@@ -69,25 +69,6 @@ const int* kssignal_fatalSignals(void);
  * @return The size of the fatal signals list.
  */
 int kssignal_numFatalSignals(void);
-
-/** Get the signal equivalent of a mach exception.
- *
- * @param exception The mach exception.
- *
- * @param code The mach exception code.
- *
- * @return The matching signal, or 0 if not found.
- */
-int kssignal_signalForMachException(int exception,
-                                    mach_exception_code_t code);
-
-/** Get the mach exception equivalent of a signal.
- *
- * @param signal The signal.
- *
- * @return The matching mach exception, or 0 if not found.
- */
-int kssignal_machExceptionForSignal(int signal);
 
 
 #ifdef __cplusplus

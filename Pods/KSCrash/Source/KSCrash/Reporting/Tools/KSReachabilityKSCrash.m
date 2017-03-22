@@ -34,7 +34,7 @@
 #define kKVOProperty_Reachable @"reachable"
 #define kKVOProperty_WWANOnly  @"WWANOnly"
 
-
+#if KSCRASH_HAS_REACHABILITY
 @interface KSReachabilityKSCrash ()
 
 @property(nonatomic,readwrite,retain) NSString* hostname;
@@ -334,3 +334,56 @@ static void onReachabilityChanged(__unused SCNetworkReachabilityRef target,
 }
 
 @end
+
+#else
+
+@implementation KSReachabilityKSCrash
+
+@synthesize onReachabilityChanged = _onReachabilityChanged;
+@synthesize reachable = _reachable;
+@synthesize WWANOnly = _WWANOnly;
+@synthesize hostname = _hostname;
+@synthesize notificationName = _notificationName;
+
++ (KSReachabilityKSCrash*) reachabilityToHost:(__unused NSString*) hostname
+{
+    return [[self alloc] init];
+}
+
+
++ (KSReachabilityKSCrash*) reachabilityToLocalNetwork
+{
+    return [[self alloc] init];
+}
+
+- (BOOL) updateFlags
+{
+    return NO;
+}
+
+@end
+
+@implementation KSReachableOperationKSCrash
+
++ (KSReachableOperationKSCrash*) operationWithHost:(NSString*) host
+                                         allowWWAN:(BOOL) allowWWAN
+                                             block:(void(^)()) block
+{
+    return [[self alloc] initWithHost:host allowWWAN:allowWWAN block:block];
+}
+
+- (id) initWithHost:(__unused NSString*) host
+          allowWWAN:(__unused BOOL) allowWWAN
+              block:(void(^)()) block
+{
+    if((self = [super init]))
+    {
+        // Just lie and pretend that we always have reachability.
+        dispatch_async(dispatch_get_global_queue( DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), block);
+    }
+    return self;
+}
+
+@end
+
+#endif
