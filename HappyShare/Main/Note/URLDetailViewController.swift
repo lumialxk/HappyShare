@@ -46,12 +46,12 @@ class URLDetailViewController: NoteDetailViewController {
         if webView.canGoBack {
             webView.goBack()
         } else {
-            navigationController?.popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     
     @IBAction func back(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -38,7 +38,7 @@ class WriteURLNoteViewController: WriteNoteViewController {
     @IBAction func save(_ sender: UIBarButtonItem) {
         HSCoreDataManager.sharedManager.modifyNote(note: note, title: titleTextField.text, icon: note?.icon, content: contentTextField.text, url: note?.url, type: NoteType.URL.rawValue, data: note?.data, album: selectedAlbum, tags: selectedTags)
         
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
 }

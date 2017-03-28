@@ -95,9 +95,9 @@ extension NoteDetailViewController: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension NoteDetailViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let tags = Array(note!.tags!) as! [Tag]
-        guard let name = indexPath.row < (tags.count ?? 0) ? tags[indexPath.row].name : ((deletedTags as NSArray)[indexPath.row - tags.count] as? Tag)?.name else {
+        guard let name = indexPath.row < tags.count ? tags[indexPath.row].name : ((deletedTags as NSArray)[indexPath.row - tags.count] as? Tag)?.name else {
             return CGSize.zero
         }
         // 依据文字计算宽度

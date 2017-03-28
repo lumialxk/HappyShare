@@ -177,7 +177,7 @@ class WriteRecordNoteViewController: WriteNoteViewController {
     func updatePlayTime() {
         timeLabel.text = String(format: "%.1f/%.1f", arguments: [player?.currentTime ?? 0.0,player?.duration ?? 0.0])
         progressView.setProgress(player?.currentTime &/ player?.duration, animated: true)
-        print(dynamicPlayer?.currentTime)
+        print(dynamicPlayer?.currentTime as Any)
     }
     
     func updateRecordTime() {

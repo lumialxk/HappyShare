@@ -52,6 +52,7 @@ class LXKCoreDataManager {
     
     // MARK: - Public Methods
     
+    @discardableResult
     func saveContext() -> Bool {
         guard let managedObjectContext = managedObjectContext else {
             print("Managed Object Context is nil")

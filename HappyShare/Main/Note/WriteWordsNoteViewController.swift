@@ -55,7 +55,7 @@ class WriteWordsNoteViewController: WriteNoteViewController {
         } else {
             HSCoreDataManager.sharedManager.addNewNote(title: titleTextField.text, icon: nil, content: contentTextView.text, url: "http://www.baidu.com", type: NoteType.Words.rawValue, data: nil, album: selectedAlbum, tags: selectedTags)
         }
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func textViewDidBeginEdit(notification: NSNotification) {

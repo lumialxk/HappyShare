@@ -57,7 +57,7 @@ class WritePhotoNoteViewController: WriteNoteViewController {
         } else {
             let data = NSKeyedArchiver.archivedData(withRootObject: photos ?? [])
             HSCoreDataManager.sharedManager.addNewNote(title: titleTextField.text, icon: photos?.first as NSData?, content: nil, url: nil, type: NoteType.Photo.rawValue, data: data as NSData?, album: nil, tags: selectedTags)
-            navigationController?.popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
         }
     }
     

@@ -96,7 +96,9 @@ class TagViewController: UIViewController {
         for index in 0..<pinyins.count {
             let firstPinyin = String(pinyins[index].characters.first ?? "#")
             if pinyinGroups.keys.contains(firstPinyin) {
-                if let newElements = pinyinGroups[firstPinyin]?.append(tags[index]) as? AnyObject as? [Tag] {
+                var newElements = pinyinGroups[firstPinyin]
+                newElements?.append(tags[index])
+                if let newElements = newElements {
                     pinyinGroups.updateValue(newElements, forKey: firstPinyin)
                 }
             } else {

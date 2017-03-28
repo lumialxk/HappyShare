@@ -26,7 +26,6 @@
 		EA7968721DC9D3D300ACDEBC /* 乐享.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA7968681DC9D3D300ACDEBC /* 乐享.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		EA79687F1DC9D3FD00ACDEBC /* LXKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687A1DC9D3FD00ACDEBC /* LXKFileManager.swift */; };
 		EA7968811DC9D3FD00ACDEBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */; };
-		EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA79687D1DC9D3FD00ACDEBC /* Info.plist */; };
 		EAE0EE6E1D0E5051003404B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */; };
 		EAE0EE7C1D0E5051003404B2 /* HappyShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE7B1D0E5051003404B2 /* HappyShareTests.swift */; };
 		EAE0EE871D0E5051003404B2 /* HappyShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE861D0E5051003404B2 /* HappyShareUITests.swift */; };
@@ -504,7 +503,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "李现科";
 				TargetAttributes = {
 					EA7968671DC9D3D300ACDEBC = {
@@ -568,7 +567,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */,
 				EA7968811DC9D3FD00ACDEBC /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -807,8 +805,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -852,8 +852,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -872,6 +874,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

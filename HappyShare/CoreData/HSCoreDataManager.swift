@@ -56,6 +56,7 @@ extension HSCoreDataManager {
         return tag
     }
     
+    @discardableResult
     func deleteTag(tag: Tag) -> Bool {
         managedObjectContext?.delete(tag)
         return saveContext()
@@ -144,6 +145,7 @@ extension HSCoreDataManager {
         }
     }
     
+    @discardableResult
     func createDefaultAlbum() -> Album? {
         guard let managedObjectContext = managedObjectContext, defaultAlbum == nil else {
             return defaultAlbum
@@ -161,7 +163,8 @@ extension HSCoreDataManager {
 
 // MARK: - Note 
 extension HSCoreDataManager {
-        
+    
+    @discardableResult
     func addNewNote(title: String?, icon: NSData?, content:String?, url: String?, type: NoteType.RawValue, data: NSData?, album: Album?, tags: [Tag]?) -> Note? {
         var album = album
         guard let managedObjectContext = managedObjectContext else {
@@ -186,6 +189,7 @@ extension HSCoreDataManager {
         return note
     }
     
+    @discardableResult
     func modifyNote(note: Note?, title: String?, icon: NSData?, content:String?, url: String?, type: NoteType.RawValue, data: NSData?, album: Album?, tags: [Tag]?) -> Note? {
         var album = album
         album = album ?? defaultAlbum
@@ -203,23 +207,27 @@ extension HSCoreDataManager {
         return note
     }
     
+    @discardableResult
     func deleteNote(note: Note) -> Bool {
         managedObjectContext?.delete(note)
         return saveContext()
     }
     
+    @discardableResult
     func moveNote(note: Note,toOrder order: Int) -> Bool {
         
         note.syncStatus = false
         return saveContext()
     }
     
+    @discardableResult
     func moveNote(note: Note?,toAlbum album: Album) -> Bool {
         note?.album = album
         note?.syncStatus = false
         return saveContext()
     }
     
+    @discardableResult
     func deleteTag(tag: Tag, inNote note: inout Note?) -> Bool {
         if let oldTags = note?.tags?.mutableCopy() as? NSMutableOrderedSet {
             oldTags.remove(tag)
@@ -229,6 +237,7 @@ extension HSCoreDataManager {
         return saveContext()
     }
     
+    @discardableResult
     func addTag(tag: Tag,toNote note: Note?) -> Bool {
         if let oldTags = note?.tags?.mutableCopy() as? NSMutableOrderedSet {
             oldTags.add(tag)
@@ -338,6 +347,7 @@ extension HSCoreDataManager {
         }
     }
     
+    @discardableResult
     func createDefaultNotes() -> Bool {
         if let exampleTag = addNewTag(name: "示例标签") {
             addNewNote(title: "", icon: nil, content: "", url: nil, type: NoteType.Words.rawValue, data: nil, album: nil, tags: [exampleTag])

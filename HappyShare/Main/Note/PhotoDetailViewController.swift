@@ -111,9 +111,9 @@ extension PhotoDetailViewController {
 // MARK: - UICollectionViewDelegateFlowLayout
 extension PhotoDetailViewController {
 
-    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if collectionView == tagCollectionView {
-            return super.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAtIndexPath: indexPath)
+            return super.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
         }
         return CGSize.zero
     }

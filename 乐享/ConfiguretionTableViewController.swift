@@ -41,13 +41,13 @@ class ConfiguretionViewController: UIViewController {
     }
     
     @IBAction func back(_ sender: UIBarButtonItem) {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func complete(_ sender: UIBarButtonItem) {
         
         didSelectTags?(selectedTags)
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     
@@ -82,7 +82,7 @@ extension ConfiguretionViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if type == ConfiguretionType.album {
             didSelectAlbum?(albums?[indexPath.row])
-            navigationController?.popViewController(animated: true)
+            _ = navigationController?.popViewController(animated: true)
         } else {
             if let tag = tags?[indexPath.row] {
                 if selectedTags.contains(tag) {

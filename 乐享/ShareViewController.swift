@@ -89,11 +89,11 @@ class ShareViewController: SLComposeServiceViewController {
             self.pushConfigurationViewController(configuretionVC)
         }
         
-        return [albumItem, tagItem]
+        return [albumItem!, tagItem!]
     }
     
     private func fetchItemData() {
-        DispatchQueue.global(priority: .high).sync() { [weak self]() -> Void in
+        DispatchQueue.global(qos: .utility).sync { [weak self]() -> Void in
             if let providers = (self?.extensionContext?.inputItems.first as? NSExtensionItem)?.attachments as? [NSItemProvider] {
                 for provider in providers {
                     if let identifier = provider.registeredTypeIdentifiers.first as? String {
