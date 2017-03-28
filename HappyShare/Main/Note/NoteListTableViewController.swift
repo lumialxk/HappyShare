@@ -13,7 +13,7 @@ import UIKit
 enum NoteListType {
     case tag
     case album
-    case `type`
+    case type
 }
 
 class NoteListTableViewController: UITableViewController {

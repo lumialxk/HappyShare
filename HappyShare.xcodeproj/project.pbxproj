@@ -8,20 +8,25 @@
 
 /* Begin PBXBuildFile section */
 		16BAA32FA116AB916188B80C /* Pods_HappyShare.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0780278DA84EBEB91BA590D2 /* Pods_HappyShare.framework */; };
+		EA39461F1E891EB1008F5EE9 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */; };
+		EA3946201E891EB4008F5EE9 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */; };
+		EA3946221E891EB8008F5EE9 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */; };
+		EA3946231E891EBC008F5EE9 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */; };
+		EA3946241E891EBF008F5EE9 /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */; };
+		EA3946251E891EC3008F5EE9 /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */; };
+		EA3946281E89F524008F5EE9 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7968791DC9D3FD00ACDEBC /* ShareViewController.swift */; };
+		EA3946291E89F52A008F5EE9 /* ConfiguretionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */; };
+		EA39462C1E89F582008F5EE9 /* HSCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */; };
+		EA39462D1E89F628008F5EE9 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */; };
+		EA39462E1E89F628008F5EE9 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */; };
+		EA39462F1E89F628008F5EE9 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */; };
+		EA3946301E89F628008F5EE9 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */; };
+		EA3946311E89F628008F5EE9 /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */; };
+		EA3946321E89F628008F5EE9 /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */; };
 		EA7968721DC9D3D300ACDEBC /* 乐享.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = EA7968681DC9D3D300ACDEBC /* 乐享.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		EA79687E1DC9D3FD00ACDEBC /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7968791DC9D3FD00ACDEBC /* ShareViewController.swift */; };
 		EA79687F1DC9D3FD00ACDEBC /* LXKFileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687A1DC9D3FD00ACDEBC /* LXKFileManager.swift */; };
-		EA7968801DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA79687B1DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift */; };
 		EA7968811DC9D3FD00ACDEBC /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA79687C1DC9D3FD00ACDEBC /* MainInterface.storyboard */; };
 		EA7968821DC9D3FD00ACDEBC /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EA79687D1DC9D3FD00ACDEBC /* Info.plist */; };
-		EA7968891DC9D47100ACDEBC /* LXKCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */; };
-		EA79688A1DC9D47100ACDEBC /* HSCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA81D0E56FC003404B2 /* HSCoreDataManager.swift */; };
-		EA7B4C361E81111C0064B4B5 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C301E81111C0064B4B5 /* Note+CoreDataClass.swift */; };
-		EA7B4C371E81111C0064B4B5 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C311E81111C0064B4B5 /* Note+CoreDataProperties.swift */; };
-		EA7B4C381E81111C0064B4B5 /* Tag+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C321E81111C0064B4B5 /* Tag+CoreDataClass.swift */; };
-		EA7B4C391E81111C0064B4B5 /* Tag+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C331E81111C0064B4B5 /* Tag+CoreDataProperties.swift */; };
-		EA7B4C3A1E81111C0064B4B5 /* Album+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C341E81111C0064B4B5 /* Album+CoreDataClass.swift */; };
-		EA7B4C3B1E81111C0064B4B5 /* Album+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7B4C351E81111C0064B4B5 /* Album+CoreDataProperties.swift */; };
 		EAE0EE6E1D0E5051003404B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EAE0EE6D1D0E5051003404B2 /* Assets.xcassets */; };
 		EAE0EE7C1D0E5051003404B2 /* HappyShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE7B1D0E5051003404B2 /* HappyShareTests.swift */; };
 		EAE0EE871D0E5051003404B2 /* HappyShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EE861D0E5051003404B2 /* HappyShareUITests.swift */; };
@@ -61,6 +66,7 @@
 		EAE0EEF41D0E57AA003404B2 /* MineTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF11D0E57AA003404B2 /* MineTableViewController.swift */; };
 		EAE0EEF51D0E57AA003404B2 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF21D0E57AA003404B2 /* EnterPasswordViewController.swift */; };
 		EAE0EEF61D0E57AA003404B2 /* ColorfulCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEF31D0E57AA003404B2 /* ColorfulCircleView.swift */; };
+		EAEA81AB1E84B38C00800E3B /* LXKCoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0EEA71D0E56FC003404B2 /* LXKCoreDataManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -651,10 +657,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA7968891DC9D47100ACDEBC /* LXKCoreDataManager.swift in Sources */,
-				EA79688A1DC9D47100ACDEBC /* HSCoreDataManager.swift in Sources */,
-				EA7968801DC9D3FD00ACDEBC /* ConfiguretionTableViewController.swift in Sources */,
-				EA79687E1DC9D3FD00ACDEBC /* ShareViewController.swift in Sources */,
+				EA39462D1E89F628008F5EE9 /* Note+CoreDataClass.swift in Sources */,
+				EA39462E1E89F628008F5EE9 /* Note+CoreDataProperties.swift in Sources */,
+				EA39462F1E89F628008F5EE9 /* Tag+CoreDataClass.swift in Sources */,
+				EA3946301E89F628008F5EE9 /* Tag+CoreDataProperties.swift in Sources */,
+				EA3946311E89F628008F5EE9 /* Album+CoreDataClass.swift in Sources */,
+				EA3946321E89F628008F5EE9 /* Album+CoreDataProperties.swift in Sources */,
+				EA39462C1E89F582008F5EE9 /* HSCoreDataManager.swift in Sources */,
+				EA3946291E89F52A008F5EE9 /* ConfiguretionTableViewController.swift in Sources */,
+				EA3946281E89F524008F5EE9 /* ShareViewController.swift in Sources */,
+				EAEA81AB1E84B38C00800E3B /* LXKCoreDataManager.swift in Sources */,
 				EA79687F1DC9D3FD00ACDEBC /* LXKFileManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -681,8 +693,8 @@
 				EAE0EEE71D0E5785003404B2 /* URLDetailViewController.swift in Sources */,
 				EAE0EECC1D0E5754003404B2 /* LXKGridViewCell.m in Sources */,
 				EAE0EEE41D0E5785003404B2 /* NoteDetailViewController.swift in Sources */,
-				EA7B4C381E81111C0064B4B5 /* Tag+CoreDataClass.swift in Sources */,
-				EA7B4C371E81111C0064B4B5 /* Note+CoreDataProperties.swift in Sources */,
+				EA3946221E891EB8008F5EE9 /* Tag+CoreDataClass.swift in Sources */,
+				EA3946201E891EB4008F5EE9 /* Note+CoreDataProperties.swift in Sources */,
 				EAE0EEDE1D0E5785003404B2 /* NoteViewController.swift in Sources */,
 				EAE0EEE11D0E5785003404B2 /* WritePhotoNoteViewController.swift in Sources */,
 				EAE0EEC21D0E5734003404B2 /* Global.swift in Sources */,
@@ -690,13 +702,13 @@
 				EAE0EEEF1D0E579C003404B2 /* AlbumCollectionViewController.swift in Sources */,
 				EAE0EEE21D0E5785003404B2 /* WriteURLNoteViewController.swift in Sources */,
 				EAE0EECD1D0E5754003404B2 /* NSIndexSet+Convenience.m in Sources */,
-				EA7B4C3A1E81111C0064B4B5 /* Album+CoreDataClass.swift in Sources */,
+				EA3946241E891EBF008F5EE9 /* Album+CoreDataClass.swift in Sources */,
 				EAE0EEE51D0E5785003404B2 /* WordsDetailViewController.swift in Sources */,
 				EAE0EEE01D0E5785003404B2 /* WriteWordsNoteViewController.swift in Sources */,
-				EA7B4C391E81111C0064B4B5 /* Tag+CoreDataProperties.swift in Sources */,
-				EA7B4C361E81111C0064B4B5 /* Note+CoreDataClass.swift in Sources */,
+				EA3946231E891EBC008F5EE9 /* Tag+CoreDataProperties.swift in Sources */,
+				EA39461F1E891EB1008F5EE9 /* Note+CoreDataClass.swift in Sources */,
 				EAE0EEEC1D0E5791003404B2 /* TagViewController.swift in Sources */,
-				EA7B4C3B1E81111C0064B4B5 /* Album+CoreDataProperties.swift in Sources */,
+				EA3946251E891EC3008F5EE9 /* Album+CoreDataProperties.swift in Sources */,
 				EAE0EEC11D0E5734003404B2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

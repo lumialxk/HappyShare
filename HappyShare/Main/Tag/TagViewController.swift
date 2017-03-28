@@ -43,7 +43,7 @@ class TagViewController: UIViewController {
         if let cell = sender as? UITableViewCell, segue.identifier == "TagVC -> NoteListTVC" {
             if let noteListTVC = segue.destination as? NoteListTableViewController {
                 if let indexPath = tableView.indexPath(for: cell) {
-                    noteListTVC.type = .Tag
+                    noteListTVC.type = .tag
                     let keysInOrder = tagsInPinyin.keys.sorted()
                     noteListTVC.tag = tagsInPinyin[keysInOrder[indexPath.section]]?[indexPath.row]
                 }

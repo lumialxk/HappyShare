@@ -65,7 +65,7 @@ class ShareViewController: SLComposeServiceViewController {
         albumItem?.tapHandler = {
             let bundlePath = Bundle.main.bundlePath.appending("/Base.lproj/")
             let configuretionVC = UIStoryboard(name: "MainInterface", bundle: Bundle(path: bundlePath)).instantiateViewController(withIdentifier: "ConfiguretionViewController") as? ConfiguretionViewController
-            configuretionVC?.type = .Album
+            configuretionVC?.type = .album
             configuretionVC?.didSelectAlbum = {(album) in
                 self.selectedAlbum = album
                 albumItem?.title = album?.name
@@ -77,7 +77,7 @@ class ShareViewController: SLComposeServiceViewController {
         tagItem?.tapHandler = {
             let bundlePath = Bundle.main.bundlePath.appending("/Base.lproj/")
             let configuretionVC = UIStoryboard(name: "MainInterface", bundle: Bundle(path: bundlePath)).instantiateViewController(withIdentifier: "ConfiguretionViewController") as? ConfiguretionViewController
-            configuretionVC?.type = .Tag
+            configuretionVC?.type = .tag
             configuretionVC?.didSelectTags = {(tags) in
                 if tags.count > 0 {
                     self.selectedTags = tags

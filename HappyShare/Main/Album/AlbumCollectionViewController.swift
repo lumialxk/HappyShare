@@ -48,10 +48,10 @@ class AlbumCollectionViewController: UICollectionViewController {
             if let noteListTVC = segue.destination as? NoteListTableViewController {
                 if let indexPath = collectionView?.indexPath(for: cell) {
                     if indexPath.section == 0 {
-                        noteListTVC.type = .Album
+                        noteListTVC.type = .album
                         noteListTVC.album = albums?[indexPath.row]
                     } else if indexPath.section == 1 {
-                        noteListTVC.type = .Type
+                        noteListTVC.type = .type
                         switch indexPath.row {
                         case 0: noteListTVC.noteType = .Words
                         case 1: noteListTVC.noteType = .Photo
