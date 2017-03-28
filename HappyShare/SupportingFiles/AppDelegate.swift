@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             HSCoreDataManager.sharedManager.createDefaultNotes()
             UserDefaults.standard.set(true, forKey: kFirstLaunch)
         }
-        
+                
         IQKeyboardManager.shared().isEnabled = true
         
         let installation = KSCrashInstallationStandard.sharedInstance()

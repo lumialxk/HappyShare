@@ -12,6 +12,7 @@ protocol FileNameType {
     
 }
 
+/// 文件格式
 enum FileType: String,FileNameType {
     enum Image: String,FileNameType {
         case Gif
@@ -40,6 +41,7 @@ enum FileType: String,FileNameType {
 
 extension NSData {
     
+    /// 根据文件头判断格式
     var fileType: FileNameType {
         var oneToEight = (UInt8(0),UInt8(0),UInt8(0),UInt8(0),UInt8(0),UInt8(0),UInt8(0),UInt8(0))
         self.getBytes(&oneToEight, length: 8 * MemoryLayout.size(ofValue: UInt8.allZeros))
@@ -62,6 +64,7 @@ extension NSData {
         }
     }
     
+    /// 文件头(8个字节)
     var fileHeader: String? {
         var cArray = [UInt8](repeating: 0 ,count: 8)
         self.getBytes(&cArray, length: 8 * MemoryLayout.size(ofValue: UInt8.allZeros))
